@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import Pagination from './Pagination';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
 import Discover from '../pages/Discover';
 import People from '../pages/People';
 import TVShow from '../pages/Tv';
 import { Switch, Route } from 'react-router-dom'
-
 
 class Main extends Component {
     render() {

@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import image from '../../static/images/items/image_content.jpg';
 
 class Item extends Component {
     render() {
+        const movie = this.props.movie;
+        const { title, overview, release_date } = movie;
+        const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+        const imageStyle = {
+            width: '185px',
+            height: '278px'
+        };
+        
         return (
             <div className="ss_item ss_card">
                 <div className="ss_image_content">
                     <a href="">
-                        <img src={image} alt="The Shawshank Redemption" />
-                        {/* <div className="ss_meta">
-                        </div> */}
+                        <img style={imageStyle} src={imageUrl} alt="The Shawshank Redemption" />
+                        <div className="ss_meta">
+                        </div>
                     </a>
                 </div>
                 <div className="ss_info">
@@ -19,14 +26,13 @@ class Item extends Component {
                             </div>
                         </div>
                         <div className="ss_wrapper_title">
-                            <a href="" className="ss_title_result">The Shawshank Redemption</a>
-                            <span>September 23, 1994</span>
+                            <a href="" className="ss_title_result">{title}</a>
+                            <span>{release_date}</span>
                         </div>
                     </div>
                     <p className="ss_overview">
-                        Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at
-                        the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During…
-                                    </p>
+                        {overview}    
+                    </p>
                     <p className="ss_view_more">
                         <a href="">More Info</a>
                     </p>
