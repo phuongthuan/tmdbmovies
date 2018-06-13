@@ -7,7 +7,7 @@ import Footer from './layouts/Footer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div id="ss_wrapper">
         <Header />
         <Main />
         <Footer />

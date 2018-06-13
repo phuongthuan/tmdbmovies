@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 class SearchBar extends Component {
     render() {
         return (
-            <div class="search_bar">
-                <section class="search">
-                    <div class="sub_media container">
+            <div className="search_bar">
+                <section className="search">
+                    <div className="sub_media container">
                         <form method="GET" action="" id="search_form">
-                            <i class="fas fa-search sm"></i>
-                            <span class="autocomplete">
+                            <FontAwesomeIcon icon="search" />
+                            <span className="autocomplete">
                                 <input
-                                    autocorrect="off"
-                                    autofill="off"
-                                    autocomplete="off"
+                                    autoCorrect="off"
+                                    autoComplete="off"
                                     name="query"
                                     type="text"
                                     placeholder="Search for a movie, tv show, person..." />
