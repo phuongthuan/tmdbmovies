@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import Icon from '@fortawesome/react-fontawesome'
 
 class SearchBar extends Component {
     render() {
@@ -8,7 +8,7 @@ class SearchBar extends Component {
                 <section className="search">
                     <div className="sub_media container">
                         <form method="GET" action="" id="search_form">
-                            <FontAwesomeIcon icon="search" />
+                            <Icon icon="search" />
                             <span className="autocomplete">
                                 <input
                                     autoCorrect="off"
