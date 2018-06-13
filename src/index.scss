@@ -145,14 +145,7 @@ header.ss_header {
             li {
                 text-align: right;
                 padding: 10px 0;
-                text-underline-position: under;
-                a {
-                    text-decoration: underline;
-                }
-            }
-
-            .nav-link {
-                padding: 0;
+                
             }
         }
 
@@ -177,7 +170,6 @@ header.ss_header {
         background-color: #fff;
         height: 46px;
         border-bottom: 1px solid #dedede;
-
 
         form {
             margin-top: 0;
@@ -241,7 +233,7 @@ header.ss_header {
 
 main {
     box-sizing: border-box;
-    padding-top: 158px;
+    // padding-top: 158px;
     width: 100%;
     min-height: 100%;
 }
@@ -274,7 +266,7 @@ main {
 
         .right {
             a {
-                i {
+                svg {
                     font-size: 1.8em;
                     color: #000;
                 }
@@ -292,6 +284,8 @@ main {
 
         .ss_image_content {
             max-width: 185px;
+            height: 278px;
+            line-height: 0;
         }
 
         .ss_info {
@@ -394,4 +388,9 @@ footer {
 .ss_poster {
     display: flex;
     align-items: center;
+}
+
+.nav-active {
+    text-underline-position: under;
+    text-decoration: underline;
 }
