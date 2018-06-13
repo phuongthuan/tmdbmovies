@@ -3,10 +3,14 @@ import Icon from '@fortawesome/react-fontawesome';
 
 class Pagination extends Component {
     render() {
+
+        const dataPaginate = this.props.dataPaginate;
+        const { page, total_pages, total_results } = dataPaginate;
+        
         return (
             <div className="ss_pagination">
-                <p className="left">Currently on page: 1 of 288
-                    <span className="total_results grey">(5,756 results)</span>
+                <p className="left">Currently on page: {page} of {total_pages}
+                    <span className="total_results grey">({total_results})</span>
                 </p>
                 <p className="right">
                     <a href="">
