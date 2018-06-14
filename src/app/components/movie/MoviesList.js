@@ -4,24 +4,34 @@ import axios from 'axios';
 import Pagination from '../../layouts/Pagination';
 
 class MoviesList extends Component {
-    state = {
-        data: {
-            results: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {
+                results: []
+            },
+            isLoading: false
         }
     }
+    
     componentDidMount() {
+        this.setState({isLoading: true});
+
         axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=137efd2d370db5e4c53251137cd907df&language=en-US&include_adult=false`)
             .then(response => {
-                const data = response.data;
-                this.setState({data});
-                console.log(data);
+                this.setState({ data: response.data, isLoading: false});
+                console.log(response.data);
             });
     }
+
     render() {
         const movies = this.state.data.results;
+        if (this.state.isLoading) { 
+            return <p>Loading...</p>            
+        }
         return (
             <div className="ss_results">
-                {movies.map(movie => (<Item movie={movie} key={movie.id} />) )}
+                {movies.map((movie) => (<Item movie={movie} key={movie.id} />) )}
                 <Pagination dataPaginate={this.state.data} />
             </div>
         );
