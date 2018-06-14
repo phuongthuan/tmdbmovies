@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 
 class Navbar extends Component {
-    render() {
+    render() {        
         const submenu = {
             discover: [
                 { routeName: '', name: 'Movies', mainMenu: 'discover'},
