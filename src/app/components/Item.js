@@ -4,12 +4,14 @@ class Item extends Component {
     render() {
         const movie = this.props.movie;
         const { title, overview, release_date } = movie;
+        const overviewTrim = overview.length > 200 ? overview.substring(0, 197) + '...' : overview;
         const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
         const imageStyle = {
             width: '185px',
             height: '278px'
         };
-        
+
+
         return (
             <div className="ss_item ss_card">
                 <div className="ss_image_content">
@@ -31,7 +33,7 @@ class Item extends Component {
                         </div>
                     </div>
                     <p className="ss_overview">
-                        {overview}    
+                        {overviewTrim}    
                     </p>
                     <p className="ss_view_more">
                         <a href="">More Info</a>
