@@ -69,6 +69,9 @@ header {
     }
     li {
         list-style: none;
+        &:hover .ss_sub_menu {
+            display: block;
+        }
     }
 }
 
@@ -141,11 +144,24 @@ header.ss_header {
         ul.ss_menu {
             text-transform: uppercase;
             display: flex;
-
             li {
                 text-align: right;
                 padding: 10px 0;
-                
+            }
+            ul.ss_sub_menu {
+                justify-content: flex-start;
+                height: auto;
+                position: absolute;
+                font-size: 0.9em;
+                transition: opacity 1s ease;
+                li {
+                    display: inline-block;
+                    a {
+                        color: #868e91;
+                        text-transform: none;
+                        font-weight: 500;
+                    }
+                }
             }
         }
 
@@ -233,7 +249,6 @@ header.ss_header {
 
 main {
     box-sizing: border-box;
-    // padding-top: 158px;
     width: 100%;
     min-height: 100%;
 }
@@ -391,4 +406,12 @@ footer {
 .nav-active {
     text-underline-position: under;
     text-decoration: underline;
+}
+
+.tv {
+    color: #2dd4f7;
+}
+
+.ss_sub_menu {
+    display: none;
 }

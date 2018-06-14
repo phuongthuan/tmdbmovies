@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Discover extends Component {
+class Popular extends Component {
     render() {
         return (
             <div>
-                Discover Component :D
+                <h2 className="title">Popular TV Shows</h2>
             </div>
         );
     }
 }
 
-export default Discover;
+export default Popular;

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Tv extends Component {
+class AiringToday extends Component {
     render() {
         return (
             <div>
-                TV Component :D
+                <h2 className="title">TV Shows Airing Today</h2>
             </div>
         );
     }
 }
 
-export default Tv;
+export default AiringToday;

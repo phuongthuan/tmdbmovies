@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import MoviesList from '../components/movie/MoviesList';
+import MoviesList from '../../components/movie/MoviesList';
 
-class Movies extends Component {
+
+class TopRated extends Component {
     render() {
         return (
-            <div className="ss_media">
+            <div>
                 <h2 className="title">Top Rated Movies</h2>
                 <MoviesList />
             </div>
@@ -12,4 +13,4 @@ class Movies extends Component {
     }
 }
 
-export default Movies;
+export default TopRated;
