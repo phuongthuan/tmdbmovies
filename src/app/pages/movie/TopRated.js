@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MoviesList from '../../components/movie/MoviesList';
 
-
 class TopRated extends Component {
     render() {
         return (

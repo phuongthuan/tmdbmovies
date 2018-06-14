@@ -20,7 +20,6 @@ class MoviesList extends Component {
         axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=137efd2d370db5e4c53251137cd907df&language=en-US&include_adult=false`)
             .then(response => {
                 this.setState({ data: response.data, isLoading: false});
-                console.log(response.data);
             });
     }
 
