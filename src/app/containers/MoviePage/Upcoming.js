@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import MovieListContainer from './MovieListContainer';
 import movieApi from './api';
 
-class Popular extends Component {
-    
+class Upcoming extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +15,7 @@ class Popular extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('popular').then(response => {
+        movieApi.fetchMovie('upcoming').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
@@ -24,11 +23,11 @@ class Popular extends Component {
     render() {
         return (
             <div>
-                <h2 className="title">Popular Movies</h2>
+                <h2 className="title">Upcoming Movies</h2>
                 <MovieListContainer movies={this.state.data} />
             </div>
         );
     }
 }
 
-export default Popular;
+export default Upcoming;

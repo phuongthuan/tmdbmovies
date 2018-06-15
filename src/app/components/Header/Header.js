@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
 
-class Header extends Component {
-    render() {
-        return (
-            <header className="ss_header fixed-top">
-                <Navbar />
-                <SearchBar />
-            </header>
-        );
-    }
+const Header = () => {
+    return (
+        <header className="ss_header">
+            <Navbar />
+            <SearchBar />
+        </header>
+    );
 }
 
 export default Header;
