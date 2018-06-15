@@ -10,6 +10,10 @@ async function fetchMovie(option) {
     return await api.get(`movie/${option}?api_key=${key}&language=en-US&include_adult=false`);
 }
 
+async function fetchMoviePaginate(option, page) {
+    return await api.get(`movie/${option}?api_key=${key}&language=en-US&page=${page}&include_adult=false`);
+}
 export default {
-    fetchMovie
+    fetchMovie,
+    fetchMoviePaginate
 }
