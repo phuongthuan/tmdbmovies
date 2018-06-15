@@ -6,7 +6,7 @@ import NowPlaying from './NowPlaying';
 import Popular from './Popular';
 import MovieDetail from './MovieDetail';
 
-class Movies extends Component {
+class MoviePage extends Component {
     render() {
         return (
             <div className="ss_media">
@@ -20,4 +20,4 @@ class Movies extends Component {
     }
 }
 
-export default Movies;
+export default MoviePage;

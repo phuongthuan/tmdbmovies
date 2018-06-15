@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import MoviesList from '../../components/movie/MoviesList';
+import MovieListContainer from './MovieListContainer';
 
 class TopRated extends Component {
     render() {
         return (
             <div>
                 <h2 className="title">Top Rated Movies</h2>
-                <MoviesList />
+                <MovieListContainer />
             </div>
         );
     }
