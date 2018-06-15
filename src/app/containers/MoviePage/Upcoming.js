@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MovieListContainer from './MovieListContainer';
 import movieApi from './api';
+import MovieList from './MovieList';
 
 class Upcoming extends Component {
     constructor(props) {
@@ -11,6 +11,20 @@ class Upcoming extends Component {
             },
             isLoading: false
         }
+    }
+
+    nextPage(e) {
+        const page = this.state.data.page + 1;
+        movieApi.fetchMoviePaginate('upcoming', page).then(response => {
+            this.setState({ data: response.data });
+        });
+    }
+
+    prevPaginate(e) {
+        const page = this.state.data.page - 1;
+        movieApi.fetchMoviePaginate('upcoming', page).then(response => {
+            this.setState({ data: response.data });
+        });
     }
 
     componentDidMount() {
@@ -24,7 +38,11 @@ class Upcoming extends Component {
         return (
             <div>
                 <h2 className="title">Upcoming Movies</h2>
-                <MovieListContainer movies={this.state.data} />
+                <MovieList
+                    routeProps={this.props}
+                    prevPaginate={this.prevPaginate.bind(this)}
+                    nextPaginate={this.nextPage.bind(this)}
+                    moviesList={this.state.data} />
             </div>
         );
     }
