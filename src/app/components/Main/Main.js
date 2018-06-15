@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Home from '../pages/Home';
-import Movies from '../pages/movie/Movies';
-import Discover from '../pages/discover/Discover';
-import People from '../pages/people/People';
-import TVShow from '../pages/tvshow/Tv';
+import Home from '../../containers/HomePage/Home';
+import Discover from '../../containers/DiscoverPage/Discover';
+import People from '../../containers/PeoplePage/People';
+import TVShow from '../../containers/TvShowPage/Tv';
 import { Switch, Route } from 'react-router-dom'
+import MoviePage from '../../containers/MoviePage/MoviePage';
 
 class Main extends Component {
     render() {
@@ -14,7 +14,7 @@ class Main extends Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/discover" component={Discover} />
-                        <Route path="/movie" component={Movies} />
+                        <Route path="/movie" component={MoviePage} />
                         <Route path="/tv" component={TVShow} />
                         <Route path="/person" component={People} />
                     </Switch>
