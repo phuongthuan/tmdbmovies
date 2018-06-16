@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const Item = (props) => {
     const movie = props.movie;
@@ -8,6 +10,7 @@ const Item = (props) => {
     const titleRoute = title.toLowerCase()
         .replace(/[^\w ]+/g, '')
         .replace(/ +/g, '-');
+    
     const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     const imageStyle = {
         width: '185px',
@@ -31,7 +34,7 @@ const Item = (props) => {
                     </div>
                     <div className="ss_wrapper_title">
                         <Link to={`/movie/${id}-${titleRoute}`} className="ss_title_result">{title}</Link>
-                        <span>{release_date}</span>
+                        <span><Moment format="MMM DD,YYYY">{release_date}</Moment></span>
                     </div>
                 </div>
                 <p className="ss_overview">
