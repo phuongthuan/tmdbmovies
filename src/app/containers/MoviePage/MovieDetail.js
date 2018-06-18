@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Tv extends Component {
+class MovieDetail extends Component {
     render() {
         return (
             <div>
-                TV Component :D
+                <h2 className="title">Movie Detail Component</h2>
             </div>
         );
     }
 }
 
-export default Tv;
+export default MovieDetail;

@@ -1,0 +1,128 @@
+/* =====================================================================================
+   Style for main content.
+   =====================================================================================*/
+
+main {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+}
+
+.ss_media {
+  margin: 50px 0;
+}
+
+.ss_results {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .ss_pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    padding-top: 20px;
+
+    p {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .right {
+      a {
+        svg {
+          font-size: 1.8em;
+          color: #000;
+        }
+      }
+    }
+  }
+
+  .ss_item {
+    width: 483px;
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+
+    .ss_image_content {
+      max-width: 185px;
+      height: 278px;
+      line-height: 0;
+    }
+
+    .ss_info {
+      max-width: 298px;
+      height: 278px;
+      position: relative;
+      box-sizing: border-box;
+      padding: 10px 16px 16px 16px;
+      overflow: hidden;
+
+      .ss_title_result {
+        width: 100%;
+        display: block;
+        font-weight: 600;
+        font-size: 1.1em;
+        line-height: 1.1em;
+      }
+    }
+
+    .ss_view_more {
+      border-top: 1px solid #e3e3e3;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 16px;
+      a {
+        font-size: 0.9em;
+        font-weight: 400;
+      }
+    }
+
+    .ss_wrapper_title {
+      span {
+        color: rgba(0, 0, 0, 0.6);
+        line-height: 1em;
+      }
+    }
+
+    p.ss_overview {
+      word-wrap: break-word;
+      white-space: normal;
+      color: #4d4d4d;
+      font-size: 0.9em;
+      line-height: 1.2em;
+      margin-top: 30px;
+    }
+
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0;
+      width: 100%;
+      line-height: 1.2em;
+      margin: 0;
+    }
+
+    a {
+      color: #000;
+    }
+  }
+}
+
+.ss_item {
+  .card {
+    max-width: 483px;
+    background-color: #fff;
+    box-sizing: border-box;
+  }
+}
