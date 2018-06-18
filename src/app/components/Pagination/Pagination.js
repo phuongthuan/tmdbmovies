@@ -16,7 +16,7 @@ const Pagination = (props) => {
                 </Link>
             );
         }
-    }
+    };
 
     return (
         <div className="ss_pagination">
@@ -32,6 +32,6 @@ const Pagination = (props) => {
             </p>
         </div>
     );
-}
+};
 
 export default Pagination;

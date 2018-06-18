@@ -7,11 +7,8 @@ const Item = (props) => {
     const movie = props.movie;
     const { id, overview } = movie;
 
-    var title;
-    title = movie.hasOwnProperty('title') ? movie.title : movie.name;
-
-    var release_date;
-    release_date = movie.hasOwnProperty('release_date') ? movie.release_date : movie.first_air_date;
+    let title = movie.hasOwnProperty('title') ? movie.title : movie.name;
+    let release_date = movie.hasOwnProperty('release_date') ? movie.release_date : movie.first_air_date;
 
     const overviewTrim = overview.length > 200 ? overview.substring(0, 197) + '...' : overview;
     const titleRoute = title.toLowerCase()
@@ -28,7 +25,7 @@ const Item = (props) => {
         <div className="ss_item ss_card">
             <div className="ss_image_content">
                 <Link to={`/movie/${id}-${titleRoute}`}>
-                    <img style={imageStyle} src={imageUrl} alt="The Shawshank Redemption" />
+                    <img style={imageStyle} src={imageUrl} alt={title} />
                     <div className="ss_meta">
                     </div>
                 </Link>

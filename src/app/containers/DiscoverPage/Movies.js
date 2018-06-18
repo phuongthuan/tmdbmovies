@@ -3,6 +3,7 @@ import movieApi from '../api';
 import MovieList from "../MoviePage/MovieList";
 
 class TvShow extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
