@@ -1,8 +1,8 @@
 import React from 'react';
 import Home from '../../containers/HomePage/Home';
-import Discover from '../../containers/DiscoverPage/Discover';
+import Discover from '../../containers/DiscoverPage/DiscoverPage';
 import People from '../../containers/PeoplePage/People';
-import TVShow from '../../containers/TvShowPage/Tv';
+import TVShow from '../../containers/TvShowPage/TvShowPage';
 import { Switch, Route } from 'react-router-dom'
 import MoviePage from '../../containers/MoviePage/MoviePage';
 

@@ -5,7 +5,14 @@ import 'moment-timezone';
 
 const Item = (props) => {
     const movie = props.movie;
-    const { id, title, overview, release_date } = movie;
+    const { id, overview } = movie;
+
+    var title;
+    title = movie.hasOwnProperty('title') ? movie.title : movie.name;
+
+    var release_date;
+    release_date = movie.hasOwnProperty('release_date') ? movie.release_date : movie.first_air_date;
+
     const overviewTrim = overview.length > 200 ? overview.substring(0, 197) + '...' : overview;
     const titleRoute = title.toLowerCase()
         .replace(/[^\w ]+/g, '')
@@ -15,7 +22,7 @@ const Item = (props) => {
     const imageStyle = {
         width: '185px',
         height: '278px'
-    }
+    };
 
     return (
         <div className="ss_item ss_card">
@@ -38,7 +45,7 @@ const Item = (props) => {
                     </div>
                 </div>
                 <p className="ss_overview">
-                    {overviewTrim}    
+                    {overviewTrim}
                 </p>
                 <p className="ss_view_more">
                     <a href="">More Info</a>
@@ -46,6 +53,6 @@ const Item = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default Item;
