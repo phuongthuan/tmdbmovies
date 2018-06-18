@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import SearchBar from './SearchBar';
+import './Header.scss';
 
 const Header = () => {
     return (
@@ -9,6 +10,6 @@ const Header = () => {
             <SearchBar />
         </header>
     );
-}
+};
 
 export default Header;

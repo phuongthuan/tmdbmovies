@@ -14,6 +14,6 @@ const MovieList = (props) => {
                 dataPaginate={props.moviesList} />
         </div>
     );
-}
+};
 
 export default MovieList;

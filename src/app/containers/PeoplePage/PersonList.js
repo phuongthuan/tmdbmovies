@@ -1,7 +1,7 @@
 import React from 'react';
 import Person from './Person.js';
 
-const PeopleList = (props) => {
+const PersonList = (props) => {
     const persons = props.personsList.results;
     return (
         <div className="ss_results">
@@ -11,4 +11,4 @@ const PeopleList = (props) => {
     );
 };
 
-export default PeopleList;
+export default PersonList;

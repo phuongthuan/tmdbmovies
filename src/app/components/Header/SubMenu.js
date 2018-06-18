@@ -8,6 +8,6 @@ const SubMenu = (props) => {
             {menus.map((menuitem, i) => (<li key={i}><Link to={`/${menuitem.mainMenu}${menuitem.routeName}`}>{menuitem.name}</Link></li>))}
         </ul>
     );
-}
+};
 
 export default SubMenu;

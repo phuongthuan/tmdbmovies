@@ -1,10 +1,11 @@
 import React from 'react';
 import Home from '../../containers/HomePage/Home';
 import Discover from '../../containers/DiscoverPage/DiscoverPage';
-import People from '../../containers/PeoplePage/People';
+import People from '../../containers/PeoplePage/PeoplePage';
 import TVShow from '../../containers/TvShowPage/TvShowPage';
 import { Switch, Route } from 'react-router-dom'
 import MoviePage from '../../containers/MoviePage/MoviePage';
+import './Main.scss';
 
 const Main = () => {
     return (
@@ -20,6 +21,6 @@ const Main = () => {
             </div>
         </main>
     );
-}
+};
 
 export default Main;
