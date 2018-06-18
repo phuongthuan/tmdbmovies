@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import movieApi from './api';
+import movieApi from '../api';
 import MovieList from './MovieList';
 
-class TopRated extends Component {
+class 
+TopRated extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
             data: {
                 page: 1,
+                type: 'movie',
                 results: []
             },
             isLoading: false
@@ -17,21 +19,21 @@ class TopRated extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('top_rated', page).then(response => {
+        movieApi.fetchMoviePaginate('movie', 'top_rated', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('top_rated', page).then(response => {
+        movieApi.fetchMoviePaginate('movie', 'top_rated', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('top_rated').then(response => {
+        movieApi.fetchMovie('movie', 'top_rated').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }

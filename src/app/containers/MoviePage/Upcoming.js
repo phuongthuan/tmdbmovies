@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import movieApi from './api';
+import movieApi from '../api';
 import MovieList from './MovieList';
 
 class Upcoming extends Component {
@@ -15,21 +15,21 @@ class Upcoming extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('upcoming', page).then(response => {
+        movieApi.fetchMoviePaginate('movie', 'upcoming', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('upcoming', page).then(response => {
+        movieApi.fetchMoviePaginate('movie', 'upcoming', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('upcoming').then(response => {
+        movieApi.fetchMovie('movie', 'upcoming').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
