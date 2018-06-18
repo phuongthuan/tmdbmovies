@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import image from '../../images/not-available.png';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -14,8 +15,9 @@ const Item = (props) => {
     const titleRoute = title.toLowerCase()
         .replace(/[^\w ]+/g, '')
         .replace(/ +/g, '-');
-    
-    const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+    let imageUrl = movie.poster_path == null ? image : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
     const imageStyle = {
         width: '185px',
         height: '278px'

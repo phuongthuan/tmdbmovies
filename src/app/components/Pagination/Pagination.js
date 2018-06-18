@@ -8,13 +8,40 @@ const Pagination = (props) => {
     const { page, total_pages, total_results } = dataPaginate;
     
     const paginate = () => {
-        if (page > 1) {
+        if (page === 1) {
             return (
-                <Link onClick={props.prevPaginate} to={`${match.url}?page=${page-1}`}>
-                    <Icon icon="arrow-alt-circle-left" />
-                    <span />
-                </Link>
+                <p className="right">
+                    <Link onClick={props.nextPaginate} to={`${match.url}?page=${page+1}`}>
+                        <Icon icon="arrow-alt-circle-right" />
+                        <span />
+                    </Link>
+                </p>
             );
+
+        } else if (page === total_pages) {
+            return (
+                <p className="right">
+                    <Link onClick={props.prevPaginate} to={`${match.url}?page=${page-1}`}>
+                        <Icon icon="arrow-alt-circle-left" />
+                        <span />
+                    </Link>
+                </p>
+            );
+
+        } else {
+            return (
+                <p className="right">
+                    <Link onClick={props.prevPaginate} to={`${match.url}?page=${page-1}`}>
+                        <Icon icon="arrow-alt-circle-left" />
+                        <span />
+                    </Link>
+
+                    <Link onClick={props.nextPaginate} to={`${match.url}?page=${page+1}`}>
+                        <Icon icon="arrow-alt-circle-right" />
+                        <span />
+                    </Link>
+                </p>
+            )
         }
     };
 
@@ -23,13 +50,7 @@ const Pagination = (props) => {
             <p className="left">Currently on page: {page} of {total_pages}
                 <span className="total_results grey">({total_results})</span>
             </p>
-            <p className="right">
-                {paginate()}
-                <Link onClick={props.nextPaginate} to={`${match.url}?page=${page+1}`}>
-                    <Icon icon="arrow-alt-circle-right" />
-                    <span />
-                </Link>
-            </p>
+            {paginate()}
         </div>
     );
 };

@@ -40,8 +40,9 @@ class PopularPeople extends Component {
                 <h2 className="title">Popular People</h2>
                 <PersonList
                     routeProps={this.props}
-                    personsList={this.state.data}
-                    />
+                    prevPaginate={this.prevPaginate.bind(this)}
+                    nextPaginate={this.nextPage.bind(this)}
+                    personsList={this.state.data} />
             </div>
 
         );
