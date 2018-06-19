@@ -1,0 +1,56 @@
+.ss_results .pp_square {
+  margin-top: 16px; }
+  .ss_results .pp_square .pp_item.profile.ss_card {
+    background-color: #fff;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    width: 235px; }
+  .ss_results .pp_square .pp_item.profile {
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+  .ss_results .pp_square .pp_item {
+    color: #000; }
+    .ss_results .pp_square .pp_item a {
+      color: #000;
+      font-weight: 400; }
+    .ss_results .pp_square .pp_item .pp_image_content {
+      height: 235px;
+      width: 235px;
+      margin: 0; }
+      .ss_results .pp_square .pp_item .pp_image_content a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        line-height: 0; }
+      .ss_results .pp_square .pp_item .pp_image_content img {
+        border-radius: 0;
+        width: 235px;
+        height: 235px; }
+    .ss_results .pp_square .pp_item .pp_meta {
+      padding: 4px 8px;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .ss_results .pp_square .pp_item .pp_meta p.name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0;
+        width: 100%;
+        line-height: 1.2em;
+        margin: 0; }
+        .ss_results .pp_square .pp_item .pp_meta p.name a {
+          font-weight: 600;
+          font-size: 1.1em; }
+      .ss_results .pp_square .pp_item .pp_meta p.sub {
+        font-size: 0.9em;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.6); }
+
+.results_profile_card {
+  justify-content: space-between; }
+
+/*# sourceMappingURL=People.css.map */
