@@ -12,7 +12,7 @@ class Popular extends Component {
                 results: []
             },
             isLoading: false
-        }
+        };
     }
 
     nextPage(e) {
@@ -27,10 +27,6 @@ class Popular extends Component {
         requestApi.fetchDataPaginate('movie', 'popular', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
-
-    getMoviebyId() {
-
     }
 
     componentDidMount() {

@@ -7,8 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 import MoviePage from '../../containers/MoviePage/MoviePage';
 import './Main.scss';
 
-const Main = (props) => {
-    console.log(props);
+const Main = () => {
     return (
         <main className="ss_main">
             <Switch>

@@ -4,16 +4,16 @@ import MovieList from './MovieList';
 
 class 
 TopRated extends Component {
-    
     constructor(props) {
         super(props);
+        this.getMoviebyId = this.getMoviebyId.bind(this);
         this.state = {
             data: {
                 page: 1,
-                type: 'movie',
                 results: []
             },
-            isLoading: false
+            movie: {},
+            isLoading: false,
         }
     }
 
@@ -31,6 +31,12 @@ TopRated extends Component {
         });
     }
 
+    getMoviebyId(id) {
+        requestApi.fetchDataById('movie', id).then(response => {
+            this.props.data(response.data);
+        });
+    }
+
     componentDidMount() {
         this.setState({ isLoading: true });
         requestApi.fetchData('movie', 'top_rated').then(response => {
@@ -44,6 +50,7 @@ TopRated extends Component {
                 <div className="ss_media">
                     <h2 className="title">Top Rated Movies</h2>
                     <MovieList
+                        movie={this.getMoviebyId}
                         routeProps={this.props}
                         prevPaginate={this.prevPaginate.bind(this)}
                         nextPaginate={this.nextPage.bind(this)}
