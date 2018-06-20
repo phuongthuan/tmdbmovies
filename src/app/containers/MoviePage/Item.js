@@ -5,8 +5,10 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 const Item = (props) => {
+
     const movie = props.movie;
     const { id, overview } = movie;
+    const getItemId = props.viewDetail;
 
     let title = movie.hasOwnProperty('title') ? movie.title : movie.name;
     let release_date = movie.hasOwnProperty('release_date') ? movie.release_date : movie.first_air_date;
@@ -17,7 +19,6 @@ const Item = (props) => {
         .replace(/ +/g, '-');
 
     let imageUrl = movie.poster_path == null ? image : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-
     const imageStyle = {
         width: '185px',
         height: '278px'
@@ -26,7 +27,8 @@ const Item = (props) => {
     return (
         <div className="ss_item ss_card">
             <div className="ss_image_content">
-                <Link to={`/movie/${id}-${titleRoute}`}>
+                <Link onClick={() => getItemId(id)}
+                       to={`/movie/${id}-${titleRoute}`}>
                     <img style={imageStyle} src={imageUrl} alt={title} />
                     <div className="ss_meta">
                     </div>
@@ -39,7 +41,10 @@ const Item = (props) => {
                         </div>
                     </div>
                     <div className="ss_wrapper_title">
-                        <Link to={`/movie/${id}-${titleRoute}`} className="ss_title_result">{title}</Link>
+                        <Link onClick={() => getItemId(id)}
+                              to={`/movie/${id}-${titleRoute}`}
+                              className="ss_title_result">{title}
+                        </Link>
                         <span><Moment format="MMM DD, YYYY">{release_date}</Moment></span>
                     </div>
                 </div>
@@ -52,6 +57,7 @@ const Item = (props) => {
             </div>
         </div>
     );
+
 };
 
 export default Item;

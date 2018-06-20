@@ -13,14 +13,14 @@ const DetailHeader = () => {
                                 <img src={image_detail_profile} alt="Example" />
                             </div>
                             <div className="zoom">
-                                <a href><span><i className="fas fa-search-plus" /></span>Expand</a>
+                                <a href=""><span><i className="fas fa-search-plus" /></span>Expand</a>
                             </div>
                         </div>
                         <div className="header_poster_wrapper">
                             <section className="header poster">
                                 <div className="title">
                                           <span>
-                                            <a href><h2>The Shawshank Redemption</h2></a><span className="release_date">(1994)</span>
+                                            <a href=""><h2>The Shawshank Redemption</h2></a><span className="release_date">(1994)</span>
                                           </span>
                                 </div>
                                 {/* <ul class="auto actions">

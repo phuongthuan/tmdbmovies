@@ -10,12 +10,16 @@ class MoviePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            movie: {}
         };
     }
 
-    updateMovieList = () => {
-        this.setState();
+    updateMovieList() {
+        // this.setState();
+    };
+
+    getMovie = (data) => {
+        this.setState({ movie: data });
     };
 
     render() {
@@ -23,10 +27,10 @@ class MoviePage extends Component {
             <Switch>
                 {/* <Route exact path="/movie" render={() => (<MovieComponent type="popular" data={this.state.popular} updateMovieList={this.updateMovieList.bind(this)} />)} /> */}
                 <Route exact path="/movie" render={props => <Popular {...props} />} />
-                <Route path="/movie/top-rated" render={props => <TopRated {...props} />} />
+                <Route path="/movie/top-rated" render={props => <TopRated data={this.getMovie} {...props} />} />
                 <Route path="/movie/upcoming" render={props => <Upcoming {...props} />} />
                 <Route path="/movie/now-playing" render={props => <NowPlaying {...props} />} />
-                <Route path="/movie/:movie" component={MovieDetail} />
+                <Route path="/movie/:movie" render={() => (<MovieDetail data={this.state.movie} />)} />
             </Switch>
         );
     }

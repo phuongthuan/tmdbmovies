@@ -10,7 +10,10 @@ import image_detail_media from '../../images/detail_media1.jpg';
 import flag from '../../images/flag.png';
 
 class MovieDetail extends Component {
+
     render() {
+
+        console.log('Movie Detail', this.props.data);
         return (
             <section className="inner_content">
                 <DetailHeader />
@@ -23,15 +26,15 @@ class MovieDetail extends Component {
                                     <h3>Top Billed Cast</h3>
                                     <ol className="people scroller">
                                         <li className="ss_card">
-                                            <a href>
+                                            <a href="">
                                                 <img src={image_detail_actor} alt="Profile" />
                                             </a>
-                                            <p><a href>Tim Robbins</a></p>
+                                            <p><a href="">Tim Robbins</a></p>
                                             <p className="character">Andy Dufresne</p>
                                         </li>
                                     </ol>
                                     <p className="new_button">
-                                        <a href>Full Cast &amp; Crew</a>
+                                        <a href="">Full Cast &amp; Crew</a>
                                     </p>
                                 </section>
                                 <section className="panel media_panel social_panel">
@@ -56,20 +59,20 @@ class MovieDetail extends Component {
                                                                         <h4>Featured Review</h4>
                                                                         <div className="rating_wrapper">
                                                                             <h3>
-                                                                                <a href>A review by John Chard</a>
+                                                                                <a href="">A review by John Chard</a>
                                                                             </h3>
                                                                             <div className="rounded rating">
                                                                                 <span><i /></span>
                                                                                 10.0
                                                                             </div>
                                                                         </div>
-                                                                        <h5>Written by <a href>John Chard</a> on July 10, 2016</h5>
+                                                                        <h5>Written by <a href="">John Chard</a> on July 10, 2016</h5>
                                                                     </div>
                                                                 </div>
                                                                 <div className="teaser">
                                                                     <p>Some birds aren't meant to be caged.</p>
                                                                     <p>The Shawshank Redemption is written and directed by Frank Darabont. It is an adaptation of the Stephen King novella Rita Hayworth and Shawshank Redemption. Starring Tim Robbins and Morgan Freeman, the film portrays the story of Andy Dufresne (Robbins), a banker who is sentenced to two life sentences at Shawshank State Prison for apparently murdering his wife and her lover. Andy finds it tough going but finds solace in the friendship he forms with fellow inmate, Ellis "Red" Redding (Freeman). While things start to pick up when the warden finds Andy a priso...
-                                                                        <a href>read the rest.</a></p>
+                                                                        <a href="">read the rest.</a></p>
                                                                 </div>
                                                             </div>
                                                         </div>
