@@ -1,24 +1,7 @@
 /* =====================================================================================
    Global style.
    =====================================================================================*/
-@font-face {
-  font-family: "Source Sans Pro";
-  src: url('./app/fonts/SourceSansPro-Regular.ttf'),
-  url('./app/fonts/SourceSansPro-Black.ttf'),
-  url('./app/fonts/SourceSansPro-BlackItalic.ttf'),
-  url('./app/fonts/SourceSansPro-Bold.ttf'),
-  url('./app/fonts/SourceSansPro-BoldItalic.ttf'),
-  url('./app/fonts/SourceSansPro-ExtraLight.ttf'),
-  url('./app/fonts/SourceSansPro-ExtraLightItalic.ttf'),
-  url('./app/fonts/SourceSansPro-Italic.ttf'),
-  url('./app/fonts/SourceSansPro-Light.ttf'),
-  url('./app/fonts/SourceSansPro-LightItalic.ttf'),
-  url('./app/fonts/SourceSansPro-SemiBold.ttf'),
-  url('./app/fonts/SourceSansPro-SemiBoldItalic.ttf');
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1.3;
-}
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
 
 * {
   margin: 0;
@@ -49,7 +32,6 @@ h2 {
   margin: 0 0 4px 0;
   font-weight: 600;
 }
-
 
 /* =====================================================================================
    Style for utilities.

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import movieApi from "../api";
+import requestApi from "../api";
 import MovieList from "../MoviePage/MovieList";
 
 class TopRated extends Component {
@@ -18,38 +18,39 @@ class TopRated extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
             this.setState({data: response.data});
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('tv', 'airing_today').then(response => {
+        requestApi.fetchMovie('tv', 'airing_today').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">TV Shows Airing Today</h2>
-                <MovieList
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)}
-                    nextPaginate={this.nextPage.bind(this)}
-                    moviesList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    <h2 className="title">TV Shows Airing Today</h2>
+                    <MovieList
+                        routeProps={this.props}
+                        prevPaginate={this.prevPaginate.bind(this)}
+                        nextPaginate={this.nextPage.bind(this)}
+                        moviesList={this.state.data} />
+                </div>
             </div>
         );
     }
-
 }
 
 export default TopRated;

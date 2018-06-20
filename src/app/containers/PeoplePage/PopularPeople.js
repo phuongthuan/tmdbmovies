@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import movieApi from '../api';
+import requestApi from '../api';
 import PersonList from './PersonList';
 import './People.scss';
 
@@ -16,35 +16,36 @@ class PopularPeople extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('person', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('person', 'popular', page).then(response => {
             this.setState({data: response.data});
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('person', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('person', 'popular', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
-        movieApi.fetchMovie('person', 'popular').then(response => {
+        requestApi.fetchData('person', 'popular').then(response => {
             this.setState({ data: response.data });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">Popular People</h2>
-                <PersonList
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)}
-                    nextPaginate={this.nextPage.bind(this)}
-                    personsList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    <h2 className="title">Popular People</h2>
+                    <PersonList
+                        routeProps={this.props}
+                        prevPaginate={this.prevPaginate.bind(this)}
+                        nextPaginate={this.nextPage.bind(this)}
+                        personsList={this.state.data} />
+                </div>
             </div>
-
         );
     }
 }
