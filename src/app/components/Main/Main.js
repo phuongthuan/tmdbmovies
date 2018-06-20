@@ -7,18 +7,17 @@ import { Switch, Route } from 'react-router-dom'
 import MoviePage from '../../containers/MoviePage/MoviePage';
 import './Main.scss';
 
-const Main = () => {
+const Main = (props) => {
+    console.log(props);
     return (
         <main className="ss_main">
-            <div className="container">
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/discover" component={Discover} />
-                    <Route path="/movie" component={MoviePage} />
-                    <Route path="/tv" component={TVShow} />
-                    <Route path="/person" component={People} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/discover" component={Discover} />
+                <Route path="/movie" component={MoviePage} />
+                <Route path="/tv" component={TVShow} />
+                <Route path="/person" component={People} />
+            </Switch>
         </main>
     );
 };

@@ -5,12 +5,10 @@ import PopularPeople from './PopularPeople';
 class People extends Component {
     render() {
         return (
-            <div className="ss_media">
-                <Switch>
-                    <Route exact path="/person" component={PopularPeople} />
-                    <Redirect to="/person" />
-                </Switch>
-            </div>
+            <Switch>
+                <Route exact path="/person" component={PopularPeople} />
+                <Redirect to="/person" />
+            </Switch>
         );
     }
 }

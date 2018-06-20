@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import movieApi from "../api";
+import requestApi from "../api";
 import MovieList from "../MoviePage/MovieList";
 
 class TopRated extends Component {
@@ -18,34 +18,36 @@ class TopRated extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('tv', 'on_the_air', page).then(response => {
+        requestApi.fetchDataPaginate('tv', 'on_the_air', page).then(response => {
             this.setState({data: response.data});
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('tv', 'on_the_air', page).then(response => {
+        requestApi.fetchDataPaginate('tv', 'on_the_air', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('tv', 'on_the_air').then(response => {
+        requestApi.fetchData('tv', 'on_the_air').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">Currently Airing TV Shows</h2>
-                <MovieList
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)}
-                    nextPaginate={this.nextPage.bind(this)}
-                    moviesList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    <h2 className="title">Currently Airing TV Shows</h2>
+                    <MovieList
+                        routeProps={this.props}
+                        prevPaginate={this.prevPaginate.bind(this)}
+                        nextPaginate={this.nextPage.bind(this)}
+                        moviesList={this.state.data} />
+                </div>
             </div>
         );
     }

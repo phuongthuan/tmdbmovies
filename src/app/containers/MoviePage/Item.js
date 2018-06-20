@@ -40,7 +40,7 @@ const Item = (props) => {
                     </div>
                     <div className="ss_wrapper_title">
                         <Link to={`/movie/${id}-${titleRoute}`} className="ss_title_result">{title}</Link>
-                        <span><Moment format="MMM DD,YYYY">{release_date}</Moment></span>
+                        <span><Moment format="MMM DD, YYYY">{release_date}</Moment></span>
                     </div>
                 </div>
                 <p className="ss_overview">
