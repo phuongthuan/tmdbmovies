@@ -1,12 +1,14 @@
 import React from 'react';
 import moment from 'moment';
+import image from '../../images/not-available.png';
+import Icon from '@fortawesome/react-fontawesome';
+
+
 
 const DetailHeader = (props) => {
 
     const { poster_path, title, release_date, overview } = props.data;
-    const imageUrl = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${poster_path}`;
-
-
+    let imageUrl = props.data.poster_path == null ? image : `https://image.tmdb.org/t/p/w300_and_h450_bestv2${poster_path}`;
 
     return (
         <div className="detail_header large border first">
@@ -18,7 +20,7 @@ const DetailHeader = (props) => {
                                 <img src={imageUrl} alt={title} />
                             </div>
                             <div className="zoom">
-                                <a href=""><span><i className="fas fa-search-plus" /></span>Expand</a>
+                                <a href=""><span><Icon icon="search-plus" /></span>Expand</a>
                             </div>
                         </div>
                         <div className="header_poster_wrapper">

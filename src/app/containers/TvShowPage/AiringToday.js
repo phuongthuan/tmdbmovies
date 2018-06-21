@@ -32,7 +32,7 @@ class TopRated extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        requestApi.fetchMovie('tv', 'airing_today').then(response => {
+        requestApi.fetchData('tv', 'airing_today').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
