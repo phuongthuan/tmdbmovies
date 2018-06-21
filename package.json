@@ -33,7 +33,6 @@
     "gh-pages": "^1.2.0",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -63,6 +62,7 @@
   },
   "devDependencies": {
     "babel-plugin-react-html-attrs": "^2.1.0",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3"
   },

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import image from '../../images/not-available.png';
-import Moment from 'react-moment';
-import 'moment-timezone';
+import moment from 'moment';
 
 const Item = (props) => {
 
@@ -45,7 +44,7 @@ const Item = (props) => {
                               to={`/movie/${id}-${titleRoute}`}
                               className="ss_title_result">{title}
                         </Link>
-                        <span><Moment format="MMM DD, YYYY">{release_date}</Moment></span>
+                        <span>{moment(release_date).format("MMM DD, YYYY")}</span>
                     </div>
                 </div>
                 <p className="ss_overview">

@@ -17,7 +17,7 @@ async function fetchDataPaginate(type, option, page) {
 }
 
 async function fetchDataById(type, id) {
-    return await api.get(`${type}/${id}?api_key=${key}&language=en-US&include_adult=false&append_to_response=videos,images`);
+    return await api.get(`${type}/${id}?api_key=${key}&language=en-US&include_adult=false&append_to_response=videos,images,credits,recommendations,release_dates,keywords`);
 }
 
 export default {

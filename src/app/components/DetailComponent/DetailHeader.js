@@ -1,8 +1,13 @@
 import React from 'react';
-import image_detail_profile from '../../images/detail_profile_image.jpg';
+import moment from 'moment';
+
+const DetailHeader = (props) => {
+
+    const { poster_path, title, release_date, overview } = props.data;
+    const imageUrl = `https://image.tmdb.org/t/p/w300_and_h450_bestv2${poster_path}`;
 
 
-const DetailHeader = () => {
+
     return (
         <div className="detail_header large border first">
             <div className="custom_bg">
@@ -10,7 +15,7 @@ const DetailHeader = () => {
                     <section className="images">
                         <div className="poster">
                             <div className="image_content">
-                                <img src={image_detail_profile} alt="Example" />
+                                <img src={imageUrl} alt={title} />
                             </div>
                             <div className="zoom">
                                 <a href=""><span><i className="fas fa-search-plus" /></span>Expand</a>
@@ -20,7 +25,7 @@ const DetailHeader = () => {
                             <section className="header poster">
                                 <div className="title">
                                           <span>
-                                            <a href=""><h2>The Shawshank Redemption</h2></a><span className="release_date">(1994)</span>
+                                            <a href=""><h2>{title}</h2></a><span className="release_date">({moment(release_date).format("YYYY")})</span>
                                           </span>
                                 </div>
                                 {/* <ul class="auto actions">
@@ -48,17 +53,17 @@ const DetailHeader = () => {
                                 <div className="header_info">
                                     <h3>Overview</h3>
                                     <div className="overview">
-                                        <p>Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.</p>
+                                        <p>{overview}</p>
                                     </div>
                                     <h3 className="featured">Featured Crew</h3>
                                     <ol className="people no_image">
                                         <li className="profile">
                                             <p><a href="">Frank Darabont</a></p>
-                                            <p className="character">Stephen King</p>
+                                            <p className="character">Director, Writer</p>
                                         </li>
                                         <li className="profile">
-                                            <p><a href="">Director, Writer</a></p>
-                                            <p className="character">Stephen King</p>
+                                            <p><a href="">Stephen King</a></p>
+                                            <p className="character">Novel</p>
                                         </li>
                                     </ol>
                                 </div>
