@@ -3,7 +3,6 @@ import Icon from '@fortawesome/react-fontawesome';
 
 class SearchBar extends Component{
     render() {
-
         return (
             <div className="search_bar">
                 <section className="search">
@@ -11,8 +10,9 @@ class SearchBar extends Component{
                         <form method="GET" action="" id="search_form">
                             <Icon icon="search" />
                             <span className="autocomplete">
-
                             <input
+                                onFocus={this.props.onFocus}
+                                onBlur={this.props.onBlur}
                                 className="search_input"
                                 autoCorrect="off"
                                 autoComplete="off"

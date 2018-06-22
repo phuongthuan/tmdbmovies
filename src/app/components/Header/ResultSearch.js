@@ -4,7 +4,7 @@ import Icon from '@fortawesome/react-fontawesome';
 class ResultSearch extends Component {
     render() {
         return (
-            <div className="results_search">
+            <div className="results_search" style={this.props.status}>
                 <div className="results_popup">
                     <div className="trending_search">
                         <div className="container">

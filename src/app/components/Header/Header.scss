@@ -4,6 +4,9 @@
 
 header {
   background-color: #081c24;
+  position: relative;
+  z-index: 1;
+
   .container {
     display: flex;
     align-items: center;
@@ -30,7 +33,6 @@ header.ss_header {
     height: auto;
     border-bottom: 1px solid #dedede;
     background-color: #fff;
-    display: none;
 
     .results_popup {
       .ss_nodata {

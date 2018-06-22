@@ -14,19 +14,20 @@ class NowPlaying extends Component {
         }
     }
 
-    nextPage(e) {
+    nextPage() {
         const page = this.state.data.page + 1;
         requestApi.fetchDataPaginate('movie', 'now_playing', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
-    prevPaginate(e) {
+    prevPaginate() {
         const page = this.state.data.page - 1;
         requestApi.fetchDataPaginate('movie', 'now_playing', page).then(response => {
             this.setState({ data: response.data });
         });
     }
+
 
     getMoviebyId(id) {
         requestApi.fetchDataById('movie', id).then(response => {

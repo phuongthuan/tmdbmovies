@@ -1,6 +1,6 @@
 import React from 'react';
 import './MovieDetail.scss';
-
+import requestApi from '../api';
 import MenuDetail from '../../components/DetailComponent/MenuDetail';
 import DetailHeader from '../../components/DetailComponent/DetailHeader';
 import MediaPanel from '../../components/DetailComponent/MediaPanel';
@@ -11,45 +11,63 @@ import RecommendationPanel from '../../components/DetailComponent/Recommendation
 import SideBarPanel from '../../components/DetailComponent/SideBarPanel';
 
 
-const MovieDetail = (props) => {
+class MovieDetail extends React.Component {
 
-    return (
-        <section className="inner_content">
-            <DetailHeader data={props.data} />
-            <div id="media_v4" className="media movie_v4 header_large">
-                <MenuDetail />
-                <div className="column_wrapper">
+    constructor(props) {
+        super(props);
+        this.state = {
+            movie: {}
+        }
+    }
 
-                    {/*Main Content*/}
-                    <div className="white_column">
-                        <div>
+    componentDidMount() {
+        const movieId = (this.props.match.params.movie).replace(/(^\d+)(.+$)/i,'$1');
+        requestApi.fetchDataById('movie', movieId)
+            .then(response => {
+                this.setState({ movie: response.data });
+                console.log(response.data);
+            });
+    }
 
-                            {/*Top Billed Panel*/}
-                            <TopBilledPanel data={props.data} />
-                            {/*End Top Billed Panel*/}
+    render() {
+        return (
+            <section className="inner_content">
+                <DetailHeader data={this.state.movie}/>
+                <div id="media_v4" className="media movie_v4 header_large">
+                    <MenuDetail/>
+                    <div className="column_wrapper">
+
+                        {/*Main Content*/}
+                        <div className="white_column">
+                            <div>
+
+                                {/*Top Billed Panel*/}
+                                <TopBilledPanel data={this.state.movie}/>
+                                {/*End Top Billed Panel*/}
 
 
-                            {/*Social Panel*/}
-                            <SocialPanel data={props.data} />
-                            {/*End Socical Panel*/}
+                                {/*Social Panel*/}
+                                <SocialPanel data={this.state.movie}/>
+                                {/*End Socical Panel*/}
 
-                            {/*Media Panel Component*/}
-                            <MediaPanel data={props.data} />
+                                {/*Media Panel Component*/}
+                                <MediaPanel data={this.state.movie}/>
 
-                            {/*Recommendations Panel*/}
-                            <RecommendationPanel data={props.data} />
-                            {/*End Recommendations Panel*/}
+                                {/*Recommendations Panel*/}
+                                <RecommendationPanel data={this.state.movie}/>
+                                {/*End Recommendations Panel*/}
 
+                            </div>
                         </div>
+
+                        {/*Side Bar*/}
+                        <SideBarPanel data={this.state.movie}/>
+
                     </div>
-
-                    {/*Side Bar*/}
-                    <SideBarPanel data={props.data} />
-
                 </div>
-            </div>
-        </section>
-    );
-};
+            </section>
+        );
+    }
+}
 
 export default MovieDetail;
