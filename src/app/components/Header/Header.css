@@ -31,7 +31,13 @@ header.ss_header .results_search {
       font-size: 1.8em;
       font-weight: 700;
       color: #000;
-      padding-bottom: 20px; }
+      padding: 20px 0; }
+  header.ss_header .results_search .results_popup .trending_search h2 {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 20px 0;
+    padding: 0;
+    text-align: left; }
   header.ss_header .results_search .results_popup .ss_list_scroller ul li {
     min-height: auto;
     line-height: normal;
@@ -112,7 +118,7 @@ header.ss_header section.search {
     outline: none;
     font-family: Arial, sans-serif;
     font-style: italic;
-    font-weight: light;
+    font-weight: lighter;
     font-size: 100%;
     line-height: 1.2em;
     color: #acacac;

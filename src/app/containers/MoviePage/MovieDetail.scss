@@ -548,9 +548,12 @@ p.new_button {
       font-size: 1.1em;
       line-height: 1em;
       box-sizing: border-box;
-      a {
+
+      .media_panel {
         font-weight: 600;
         color: #000;
+        cursor: pointer;
+
         span {
           color: #666;
         }
@@ -559,7 +562,7 @@ p.new_button {
 
     li.active {
       border-bottom: 4px solid #3a181a;
-      a {
+      .media_panel {
         color: #000;
       }
     }
@@ -587,7 +590,7 @@ section.panel:last-of-type {
   padding-bottom: 0;
 }
 
-section.media_panel > .content {
+section.media_panel.media.scroller .content {
   height: 300px;
   width: 780px;
   overflow: hidden;

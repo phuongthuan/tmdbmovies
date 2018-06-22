@@ -1,56 +1,63 @@
 import React, { Component } from 'react';
+import Icon from '@fortawesome/react-fontawesome';
 
 class ResultSearch extends Component {
     render() {
         return (
-            <div class="results_search">
-                <div class="results_popup">
-                    <div class="ss_list_scroller">
-                        <ul class="ss_list_result">
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+            <div className="results_search">
+                <div className="results_popup">
+                    <div className="trending_search">
+                        <div className="container">
+                            <h2>Trending Searches</h2>
+                        </div>
+                    </div>
+
+                    <div className="ss_list_scroller">
+                        <ul className="ss_list_result">
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>Dilwale Dulhania Le Jayenge</p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>The Shawshank Redemption</p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>Your Name.</p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>The Godfather</p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>Avengers: Infinity War</p>
                                     </div>
                                 </div>
                             </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
+                            <li className="item-search">
+                                <div className="slim_search">
+                                    <div className="container">
+                                        <Icon icon="search" />
                                         <p>Spirited Away</p>
                                     </div>
                                 </div>
@@ -58,9 +65,9 @@ class ResultSearch extends Component {
                         </ul>
                     </div>
 
-                    <div class="ss_nodata">
-                        <div class="slim_search">
-                            <div class="container">
+                    <div className="ss_nodata">
+                        <div className="slim_search">
+                            <div className="container">
                                 <h2>No Result</h2>
                             </div>
                         </div>

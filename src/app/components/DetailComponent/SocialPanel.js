@@ -1,4 +1,6 @@
 import React from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
 
 const SocialPanel = (props) => {
 
@@ -43,25 +45,43 @@ const SocialPanel = (props) => {
     return (
         <section className="panel media_panel social_panel">
             <section className="review">
-                <div className="menu_bar">
-                    <h3 dir="auto">Social</h3>
-                    <ul>
-                        <li className="active"><a id="reviews" className="media_panel" href="">Reviews <span>4</span></a></li>
-                        <li><a id="discussions" className="media_panel" href="">Discussions <span>11</span></a></li>
-                    </ul>
-                </div>
-                <div className="content">
-                    <div className="original_content">
-                        <div className="review_container four">
-                            <div className="inner_content">
-                                <div className="content">
-                                    {getReviews()}
+                <Tabs selectedTabClassName="active">
+                    <div className="menu_bar">
+                        <h3 dir="auto">Social</h3>
+                        <TabList>
+                            <Tab>
+                                <div className="media_panel">
+                                    Reviews <span>4</span>
                                 </div>
-                                <p className="new_button"><a href="">Read All Reviews</a></p>
+                            </Tab>
+                            <Tab>
+                                <div className="media_panel">
+                                    Discussions <span>11</span>
+                                </div>
+                            </Tab>
+                        </TabList>
+                    </div>
+
+                    <TabPanel>
+                        <div className="content">
+                            <div className="original_content">
+                                <div className="review_container four">
+                                    <div className="inner_content">
+                                        <div className="content">
+                                            {getReviews()}
+                                        </div>
+                                        <p className="new_button"><a href="">Read All Reviews</a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </TabPanel>
+
+                    <TabPanel>
+                        Discussions Tab.
+                    </TabPanel>
+
+                </Tabs>
             </section>
         </section>
     );
