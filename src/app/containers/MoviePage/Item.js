@@ -51,7 +51,11 @@ const Item = (props) => {
                     {overviewTrim}
                 </p>
                 <p className="ss_view_more">
-                    <a href="">More Info</a>
+                    <Link
+                        onClick={() => getItemId(id)}
+                        to={`/movie/${id}-${titleRoute}`}>
+                        More Info
+                    </Link>
                 </p>
             </div>
         </div>

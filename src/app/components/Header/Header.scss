@@ -24,12 +24,14 @@ header {
 }
 
 header.ss_header {
+
   .results_search {
     width: 100%;
     height: auto;
     border-bottom: 1px solid #dedede;
     background-color: #fff;
     display: none;
+
     .results_popup {
       .ss_nodata {
         color: #000;
@@ -40,9 +42,20 @@ header.ss_header {
           font-size: 1.8em;
           font-weight: 700;
           color: #000;
-          padding-bottom: 20px;
+          padding: 20px 0;
         }
       }
+
+      .trending_search {
+          h2 {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin: 20px 0;
+            padding: 0;
+            text-align: left;
+          }
+      }
+
       .ss_list_scroller {
         ul {
           li {
@@ -138,11 +151,14 @@ header.ss_header {
     form {
       margin-top: 0;
       width: 100%;
+
       input {
         height: 43px;
         font-size: 1em;
         padding-left: 24px;
       }
+
+
     }
 
     input {
@@ -157,7 +173,7 @@ header.ss_header {
       outline: none;
       font-family: Arial, sans-serif;
       font-style: italic;
-      font-weight: light;
+      font-weight: lighter;
       font-size: 100%;
       line-height: 1.2em;
       color: #acacac;

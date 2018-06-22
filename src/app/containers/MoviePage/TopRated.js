@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import requestApi from '../api';
 import MovieList from './MovieList';
 
-class 
-TopRated extends Component {
+class TopRated extends Component {
     constructor(props) {
         super(props);
         this.getMoviebyId = this.getMoviebyId.bind(this);

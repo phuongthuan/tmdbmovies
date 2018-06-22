@@ -1,37 +1,76 @@
-import React from 'react';
+import React, { Component } from 'react';
 import image_detail_media from '../../images/detail_media1.jpg';
 import image_detail_profile from '../../images/detail_profile_image.jpg';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-const MediaPanel = () => {
-    return (
-        <section className="panel media_panel media scroller">
-            <div className="menu_bar">
-                <h3>Media</h3>
-                <ul>
-                    <li className="active" dir="auto"><a id="popular" className="media_panel" href="">Most Popular</a></li>
-                    <li dir="auto"><a id="videos" className="media_panel" href="">Videos <span>7</span></a></li>
-                    <li dir="auto"><a id="backdrops" className="media_panel" href="">Backdrops <span>21</span></a></li>
-                    <li dir="auto"><a id="posters" className="media_panel" href="">Posters <span>81</span></a></li>
-                    <li className="view_all" />
-                </ul>
-            </div>
-            <div className="content">
-                <div className="original_content">
-                    <div className="video">
+class MediaPanel extends Component {
+
+    render() {
+        return (
+            <section className="panel media_panel media scroller">
+                <Tabs selectedTabClassName="active">
+                    <div className="menu_bar">
+                        <h3>Media</h3>
+                        <TabList>
+                            <Tab>
+                                <div className="media_panel">
+                                    Most Popular
+                                </div>
+                            </Tab>
+
+                            <Tab>
+                                <div className="media_panel">
+                                    Videos <span>7</span>
+                                </div>
+                            </Tab>
+
+                            <Tab>
+                                <div className="media_panel">
+                                    Backdrops <span>21</span>
+                                </div>
+                            </Tab>
+
+                            <Tab>
+                                <div className="media_panel">
+                                    Posters <span>81</span>
+                                </div>
+                            </Tab>
+                        </TabList>
                     </div>
-                    <div className="backdrop">
-                        <img src={image_detail_media} alt="detail Media" />
-                    </div>
-                    <div className="backdrop">
-                        <img src={image_detail_media} alt="detail Media" />
-                    </div>
-                    <div className="backdrop">
-                        <img src={image_detail_profile} alt="detail Media" />
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-};
+
+                    <TabPanel>
+                        <div className="content">
+                            <div className="original_content">
+                                <div className="video">
+                                </div>
+                                <div className="backdrop">
+                                    <img src={image_detail_media} alt="detail Media"/>
+                                </div>
+                                <div className="backdrop">
+                                    <img src={image_detail_media} alt="detail Media"/>
+                                </div>
+                                <div className="backdrop">
+                                    <img src={image_detail_profile} alt="detail Media"/>
+                                </div>
+                            </div>
+                        </div>
+                    </TabPanel>
+
+                    <TabPanel>
+                        <h2>Videos Tab</h2>
+                    </TabPanel>
+
+                    <TabPanel>
+                        <h2>Backdrops Tab</h2>
+                    </TabPanel>
+
+                    <TabPanel>
+                        <h2>Posters Tab</h2>
+                    </TabPanel>
+                </Tabs>
+            </section>
+        );
+    }
+}
 
 export default MediaPanel;
