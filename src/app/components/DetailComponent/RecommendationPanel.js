@@ -1,8 +1,7 @@
 import React from 'react';
 import imageNa from '../../images/NotAvailable.png';
 import moment from 'moment';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-
+import Icon from '@fortawesome/react-fontawesome';
 
 const RecommendationPanel = (props) => {
 
@@ -25,14 +24,14 @@ const RecommendationPanel = (props) => {
                         <a href="/movie/238" title={recommendation.title}>
                             <img src={checkImage(recommendation.backdrop_path)} alt={recommendation.title} />
                             <div className="meta">
-                                <span className="release_date"> {moment(recommendation.release_date).format("MM/DD/YYYY")}</span>
+                                <span className="release_date"><Icon icon="calendar-alt" />&nbsp;{moment(recommendation.release_date).format("MM/DD/YYYY")}</span>
                             </div>
                         </a>
                     </div>
 
                     <p className="movie flex">
                         <a className="title" href="/movie/238" title={recommendation.title}><bdi>{recommendation.title}</bdi></a>
-                        <span className="vote_average">8.6 <FontAwesomeIcon icon="star" /></span>
+                        <span className="vote_average">8.6 <Icon icon="star" /></span>
                     </p>
                 </div>
             ));
