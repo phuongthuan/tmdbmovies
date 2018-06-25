@@ -37,6 +37,7 @@
     "iso-language-converter": "^1.1.0",
     "jest": "20.0.4",
     "moment-timezone": "^0.5.17",
+    "node-vibrant": "^3.0.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
