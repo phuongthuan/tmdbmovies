@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
@@ -12,7 +12,7 @@ const Pagination = (props) => {
             return (
                 <p className="right">
                     <Link onClick={props.nextPaginate} to={`${match.url}?page=${page+1}`}>
-                        <Icon icon="arrow-alt-circle-right" />
+                        <FontAwesomeIcon icon="arrow-alt-circle-right" />
                         <span />
                     </Link>
                 </p>
@@ -22,7 +22,7 @@ const Pagination = (props) => {
             return (
                 <p className="right">
                     <Link onClick={props.prevPaginate} to={`${match.url}?page=${page-1}`}>
-                        <Icon icon="arrow-alt-circle-left" />
+                        <FontAwesomeIcon icon="arrow-alt-circle-left" />
                         <span />
                     </Link>
                 </p>
@@ -32,12 +32,12 @@ const Pagination = (props) => {
             return (
                 <p className="right">
                     <Link onClick={props.prevPaginate} to={`${match.url}?page=${page-1}`}>
-                        <Icon icon="arrow-alt-circle-left" />
+                        <FontAwesomeIcon icon="arrow-alt-circle-left" />
                         <span />
                     </Link>
 
                     <Link onClick={props.nextPaginate} to={`${match.url}?page=${page+1}`}>
-                        <Icon icon="arrow-alt-circle-right" />
+                        <FontAwesomeIcon icon="arrow-alt-circle-right" />
                         <span />
                     </Link>
                 </p>
