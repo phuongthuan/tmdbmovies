@@ -34,7 +34,7 @@ class Header extends React.Component {
                     onFocus={this.handleInputFocus}
                     onBlur={this.handleInputBlur}/>
                 {this.state.focus ? <ResultSearch data={this.state.results}/> : null}
-                {/*<ResultSearch status={this.state.show} />*/}
+                {/*<ResultSearch data={this.state.results} />*/}
             </header>
         );
     }

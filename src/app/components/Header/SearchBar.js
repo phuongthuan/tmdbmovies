@@ -9,7 +9,7 @@ class SearchBar extends Component {
         super(props);
         this.timeout = 0;
         this.state = {
-            result: {} || ''
+            result: {}
         }
     }
 
@@ -18,14 +18,13 @@ class SearchBar extends Component {
         if(this.timeout) clearTimeout(this.timeout);
 
         this.timeout = setTimeout(() => {
-            if (query === '') this.setState({result: ''});
+            if (query === '') this.props.data('');
 
             requestApi.searchMultiData('search/multi', query)
                 .then(response => {
-                    // this.setState({result: response.data});
                     this.props.data(response.data);
-                    console.log('Search Bar', response.data);
-                });
+                })
+                .catch(error => console.log(error));
         }, 300);
     };
 
