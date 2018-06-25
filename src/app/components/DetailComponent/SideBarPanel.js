@@ -2,7 +2,8 @@ import React from 'react';
 import isoConv from 'iso-language-converter';
 import flag from '../../images/flag.png';
 import moment from 'moment';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './SidePanel.scss';
 
 const SideBarPanel = (props) => {
 
@@ -28,9 +29,6 @@ const SideBarPanel = (props) => {
         if (props.data.release_dates && props.data.production_countries) {
 
             const dates = release_dates.results;
-
-            // console.log('Default', dates);
-            // console.log('After filter', dates.filter(release_date => production_countries.some(x => release_date.iso_3166_1 === x.iso_3166_1)));
 
             return dates.filter(release_date => production_countries.some(country => release_date.iso_3166_1 === country.iso_3166_1))
                 .map(date => date.release_dates.map((d, id) => (
@@ -71,6 +69,11 @@ const SideBarPanel = (props) => {
                     <div>
                         <div className="column no_bottom_pad">
                             <section className="facts left_column">
+                                <span className="social_links">
+                                  <a className="social_link" href="https://www.facebook.com/TheBigBangTheory" target="_blank" rel="noopener"><FontAwesomeIcon icon={['fab', 'facebook']} /></a>
+                                  <a className="social_link" href="https://twitter.com/bigbangtheory" target="_blank" rel="noopener"><FontAwesomeIcon icon={['fab', 'instagram']} /></a>
+                                  <a className="social_link" href="https://instagram.com/bigbangtheory_cbs/" target="_blank" rel="noopener"><FontAwesomeIcon icon={['fab', 'twitter-square']} /></a>
+                                </span>
                                 <h4><bdi>Facts</bdi></h4>
                                 <p><strong>Original Title</strong>{original_title}</p>
                                 <p><strong><bdi>Status</bdi></strong>{status}</p>

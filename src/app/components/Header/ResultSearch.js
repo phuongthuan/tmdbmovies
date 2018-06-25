@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ResultSearch = (props) => {
 
@@ -24,7 +24,7 @@ const ResultSearch = (props) => {
                     <div className="slim_search">
                         <div className="container">
 
-                            <Icon icon={(() => {
+                            <FontAwesomeIcon icon={(() => {
                                 switch (result.media_type) {
                                     case "movie":   return "film";
                                     case "tv":      return "tv";

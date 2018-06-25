@@ -53,6 +53,14 @@ section.inner_content {
     transition: filter 1s;
   }
 
+  // Test rgb color:
+  .test {
+    color: rgb(164, 17, 38);
+  }
+  .test {
+    color: rgb(172, 196, 212);
+  }
+
   .detail_header:before {
     filter: opacity(100) grayscale(100%) contrast(130%);
   }
