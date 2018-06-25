@@ -49,7 +49,6 @@ section.inner_content {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-image: url(../../images/detail_background.jpg);
     will-change: opacity;
     transition: filter 1s;
   }
@@ -59,10 +58,9 @@ section.inner_content {
   }
 
   // Custom Background:
+
   .custom_bg {
-
-    background-image: radial-gradient(circle at 20% 50%, rgba(22.75%, 9.41%, 10.20%, 0.98) 0%, rgba(22.75%, 9.41%, 10.20%, 0.88) 100%);
-
+    //background-image: radial-gradient(circle at 20% 50%, rgba(22.75%, 9.41%, 10.20%, 0.98) 0%, rgba(22.75%, 9.41%, 10.20%, 0.88) 100%);
     .single_column {
       background: transparent;
       width: 1000px;

@@ -24,7 +24,6 @@ class MovieDetail extends React.Component {
         requestApi.fetchDataById('movie', movieId)
             .then(response => {
                 this.setState({movie: response.data});
-                console.log(response.data);
             });
     }
 
