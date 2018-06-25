@@ -20,8 +20,13 @@ async function fetchDataById(type, id) {
     return await api.get(`${type}/${id}?api_key=${key}&language=en-US&include_adult=false&append_to_response=videos,images,credits,recommendations,release_dates,keywords,reviews`);
 }
 
+async function searchMultiData(type, query) {
+    return await api.get(`${type}?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`);
+}
+
 export default {
     fetchData,
     fetchDataPaginate,
-    fetchDataById
+    fetchDataById,
+    searchMultiData
 }

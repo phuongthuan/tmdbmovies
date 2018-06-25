@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import image from '../../images/not-available.png';
 import moment from 'moment';
 
 const Item = (props) => {
 
     const movie = props.movie;
-    const { id, overview } = movie;
+    const {id, overview} = movie;
     const getItemId = props.viewDetail;
 
     let title = movie.hasOwnProperty('title') ? movie.title : movie.name;
@@ -27,8 +27,8 @@ const Item = (props) => {
         <div className="ss_item ss_card">
             <div className="ss_image_content">
                 <Link onClick={() => getItemId(id)}
-                       to={`/movie/${id}-${titleRoute}`}>
-                    <img style={imageStyle} src={imageUrl} alt={title} />
+                      to={`/movie/${id}-${titleRoute}`}>
+                    <img style={imageStyle} src={imageUrl} alt={title}/>
                     <div className="ss_meta">
                     </div>
                 </Link>

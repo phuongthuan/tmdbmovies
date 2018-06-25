@@ -7,7 +7,6 @@ import MediaPanel from '../../components/DetailComponent/MediaPanel';
 import SocialPanel from '../../components/DetailComponent/SocialPanel';
 import TopBilledPanel from '../../components/DetailComponent/TopBilledPanel';
 import RecommendationPanel from '../../components/DetailComponent/RecommendationPanel';
-
 import SideBarPanel from '../../components/DetailComponent/SideBarPanel';
 
 
@@ -21,10 +20,10 @@ class MovieDetail extends React.Component {
     }
 
     componentDidMount() {
-        const movieId = (this.props.match.params.movie).replace(/(^\d+)(.+$)/i,'$1');
+        const movieId = (this.props.match.params.movie).replace(/(^\d+)(.+$)/i, '$1');
         requestApi.fetchDataById('movie', movieId)
             .then(response => {
-                this.setState({ movie: response.data });
+                this.setState({movie: response.data});
                 console.log(response.data);
             });
     }
@@ -39,25 +38,26 @@ class MovieDetail extends React.Component {
 
                         {/*Main Content*/}
                         <div className="white_column">
+
                             <div>
 
                                 {/*Top Billed Panel*/}
                                 <TopBilledPanel data={this.state.movie}/>
-                                {/*End Top Billed Panel*/}
 
 
                                 {/*Social Panel*/}
                                 <SocialPanel data={this.state.movie}/>
-                                {/*End Socical Panel*/}
+
 
                                 {/*Media Panel Component*/}
                                 <MediaPanel data={this.state.movie}/>
 
+
                                 {/*Recommendations Panel*/}
                                 <RecommendationPanel data={this.state.movie}/>
-                                {/*End Recommendations Panel*/}
 
                             </div>
+
                         </div>
 
                         {/*Side Bar*/}

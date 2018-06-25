@@ -9,19 +9,20 @@ class Header extends React.Component {
         super(props);
         this.state = {
             focus: false,
-            show: {
-
-            }
+            results: {}
         };
     }
 
-
     handleInputFocus = () => {
-        this.setState({ focus: true });
+        this.setState({focus: true});
     };
 
     handleInputBlur = () => {
-        this.setState({ focus: false });
+        this.setState({focus: false});
+    };
+
+    resultSearch = (data) => {
+        this.setState({results:data});
     };
 
     render() {
@@ -29,10 +30,11 @@ class Header extends React.Component {
             <header className="ss_header">
                 <Navbar/>
                 <SearchBar
+                    data={this.resultSearch}
                     onFocus={this.handleInputFocus}
-                    onBlur={this.handleInputBlur} />
-                {this.state.focus ? <ResultSearch /> : null}
-                {/*<ResultSearch status={this.state.show} />*/}
+                    onBlur={this.handleInputBlur}/>
+                {this.state.focus ? <ResultSearch data={this.state.results}/> : null}
+                {/*<ResultSearch data={this.state.results} />*/}
             </header>
         );
     }

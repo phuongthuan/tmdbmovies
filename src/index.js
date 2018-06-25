@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import fontawesome from '@fortawesome/fontawesome'
-import { faCalendarAlt, faSearch, faArrowRight, faArrowLeft, faStar, faSearchPlus } from '@fortawesome/fontawesome-free-solid';
+import { faFilm, faTv, faCalendarAlt, faSearch, faArrowRight, faArrowLeft, faStar, faSearchPlus, faUser } from '@fortawesome/fontawesome-free-solid';
 
 import App from './app/containers/App/App';
 import registerServiceWorker from './registerServiceWorker';
 
-fontawesome.library.add(faCalendarAlt, faSearch, faArrowRight, faArrowLeft, faStar, faSearchPlus);
+fontawesome.library.add(faFilm, faTv, faCalendarAlt, faSearch, faArrowRight, faArrowLeft, faStar, faSearchPlus, faUser);
 
 ReactDOM.render(
     <BrowserRouter>
