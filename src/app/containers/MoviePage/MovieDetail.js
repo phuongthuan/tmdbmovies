@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import './MovieDetail.scss';
 import requestApi from '../api';
 import MenuDetail from '../../components/DetailComponent/MenuDetail';
@@ -27,7 +28,21 @@ class MovieDetail extends React.Component {
             });
     }
 
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevProps);
+        console.log(prevState);
+    }
+
+
+    getMoviebyId = (id) => {
+        requestApi.fetchDataById('movie', id).then(response => {
+            this.props.getMovie(response.data);
+        });
+    };
+
     render() {
+
         return (
             <section className="inner_content">
                 <DetailHeader data={this.state.movie}/>
@@ -53,7 +68,7 @@ class MovieDetail extends React.Component {
 
 
                                 {/*Recommendations Panel*/}
-                                <RecommendationPanel data={this.state.movie}/>
+                                <RecommendationPanel type="movie" triggerEvent={this.getMoviebyId} data={this.state.movie}/>
 
                             </div>
 
@@ -64,6 +79,7 @@ class MovieDetail extends React.Component {
 
                     </div>
                 </div>
+                {/*<Route path="/movie/:movie" component={MovieDetail} />*/}
             </section>
         );
     }

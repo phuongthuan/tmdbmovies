@@ -14,8 +14,8 @@ class MoviePage extends Component {
         };
     }
 
-    updateMovieList() {
-        // this.setState();
+    updateMovieList = () => {
+        this.setState();
     };
 
     getMovie = (data) => {
@@ -30,7 +30,7 @@ class MoviePage extends Component {
                 <Route path="/movie/top-rated" render={props => <TopRated data={this.getMovie} {...props} />} />
                 <Route path="/movie/upcoming" render={props => <Upcoming data={this.getMovie} {...props} />} />
                 <Route path="/movie/now-playing" render={props => <NowPlaying data={this.getMovie} {...props} />} />
-                <Route path="/movie/:movie" render={props => (<MovieDetail data={this.state.movie} {...props} />)} />
+                <Route path="/movie/:movie" render={props => (<MovieDetail update={this.updateMovieList} getMovie={this.getMovie} data={this.state.movie} {...props} />)} />
             </Switch>
         );
     }

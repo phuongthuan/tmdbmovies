@@ -7,46 +7,19 @@ section.inner_content {
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
-  a {
-    color: #000;
-  }
-  section.header {
-    color: #ffffff;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: center;
-    width: 700px;
-    box-sizing: border-box;
-    padding-left: 40px;
-  }
-
-  .images {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-  }
-
-  section.images {
-    div.poster {
-      display: block;
-      width: 300px;
-      height: 450px;
-      position: relative;
-      z-index: 2;
-    }
-  }
-
   .detail_header {
+
     a {
       color: #ffffff;
     }
+
     h3 {
       font-weight: 600;
       line-height: 1.3em;
       font-size: 1.3em;
       margin-bottom: 8px;
     }
+
     h2 {
       margin: 0;
       padding: 0;
@@ -96,8 +69,16 @@ section.inner_content {
       z-index: 0;
 
       .images {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: nowrap;
 
         .poster {
+          display: block;
+          width: 300px;
+          height: 450px;
+          position: relative;
+          z-index: 2;
 
           &:hover .image_content + .zoom{
             visibility: visible;
@@ -111,7 +92,6 @@ section.inner_content {
             box-shadow: 0 0 4px rgba(0,0,0,0.2);
             border-radius: 4px;
           }
-
           .image_content {
             overflow: visible;
           }
@@ -156,7 +136,18 @@ section.inner_content {
         }
 
         .header_poster_wrapper {
+          display: flex;
+          min-height: 450px;
+
           .header {
+            color: #ffffff;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: center;
+            width: 700px;
+            box-sizing: border-box;
+            padding-left: 40px;
 
             h3 {
               width: 100%;
@@ -368,6 +359,7 @@ section.inner_content {
     }
   }
 }
+
 
 .review_container {
   .rating_wrapper {
@@ -785,19 +777,6 @@ section.facts {
     line-height: 1em;
   }
 
-  ul.networks {
-    margin-bottom: 20px;
-    li {
-      display: flex;
-      margin: 0;
-      font-size: 1.2em;
-      a {
-        display: block;
-        font-weight: 600;
-      }
-    }
-  }
-
   ul {
     li {
       margin-bottom: 6px;
@@ -1034,9 +1013,4 @@ span.round.initials {
       }
     }
   }
-}
-
-.header_poster_wrapper {
-  display: flex;
-  min-height: 450px;
 }

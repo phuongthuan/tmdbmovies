@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import requestApi from "../api";
-import MovieList from "../MoviePage/MovieList";
+import TvList from "./TvList";
 
 class TopRated extends Component {
 
@@ -16,19 +16,25 @@ class TopRated extends Component {
         }
     }
 
-    nextPage(e) {
+    nextPage = (e) => {
         const page = this.state.data.page + 1;
         requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
             this.setState({data: response.data});
         });
-    }
+    };
 
-    prevPaginate(e) {
+    prevPaginate = (e) => {
         const page = this.state.data.page - 1;
         requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
+
+    getTvbyId = (id) => {
+        requestApi.fetchDataById('tv', id).then(response => {
+            this.props.data(response.data);
+        });
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });
@@ -42,11 +48,12 @@ class TopRated extends Component {
             <div className="container">
                 <div className="ss_media">
                     <h2 className="title">TV Shows Airing Today</h2>
-                    <MovieList
+                    <TvList
+                        tv={this.getTvbyId}
                         routeProps={this.props}
-                        prevPaginate={this.prevPaginate.bind(this)}
-                        nextPaginate={this.nextPage.bind(this)}
-                        moviesList={this.state.data} />
+                        prevPaginate={this.prevPaginate}
+                        nextPaginate={this.nextPage}
+                        tvshowsList={this.state.data} />
                 </div>
             </div>
         );

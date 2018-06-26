@@ -2,35 +2,55 @@ import React from 'react';
 import imageNa from '../../images/NotAvailable.png';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 const RecommendationPanel = (props) => {
 
     const { recommendations } = props.data;
 
+    const getItemId = props.triggerEvent;
+
+    function convertRouteName(id, routeName) {
+        return '/' + props.type + '/' + id + '-' + (routeName.toLowerCase()
+            .replace(/[^\w ]+/g, '')
+            .replace(/ +/g, '-'));
+    }
+
     function checkImage(imagePath) {
-        if (imagePath == null) {
-            return imageNa;
-        }
+        if (imagePath == null) return imageNa;
         return `https://image.tmdb.org/t/p/w250_and_h141_face${imagePath}`;
     }
 
     function getRecommendations(payload) {
         if (payload) {
+
             var recommendations = payload.results.slice(0, 8);
 
-            return recommendations.map(recommendation => (
-                <div key={recommendation.id} className="item mini backdrop mini_card">
+            return recommendations.map(rec => (
+
+                <div key={rec.id} className="item mini backdrop mini_card">
                     <div className="image_content">
-                        <a href="/movie/238" title={recommendation.title}>
-                            <img src={checkImage(recommendation.backdrop_path)} alt={recommendation.title} />
+                        <Link
+                            onClick={() => getItemId(rec.id)}
+                            to={convertRouteName((rec.id), (rec.title || rec.name)) }
+                            title={rec.title || rec.name}>
+
+                            <img
+                                src={checkImage(rec.backdrop_path)}
+                                alt={rec.title || rec.name} />
                             <div className="meta">
-                                <span className="release_date"><FontAwesomeIcon icon="calendar-alt" />&nbsp;{moment(recommendation.release_date).format("MM/DD/YYYY")}</span>
+                                <span className="release_date"><FontAwesomeIcon icon="calendar-alt" />&nbsp;{moment(rec.release_date || rec.first_air_date).format("MM/DD/YYYY")}</span>
                             </div>
-                        </a>
+                        </Link>
                     </div>
 
                     <p className="movie flex">
-                        <a className="title" href="/movie/238" title={recommendation.title}><bdi>{recommendation.title}</bdi></a>
+                        <a  className="title"
+                            href="/movie/238"
+                            title={rec.title || rec.name}>
+
+                            <bdi>{rec.title || rec.name}</bdi>
+                        </a>
                         <span className="vote_average">8.6 <FontAwesomeIcon icon="star" /></span>
                     </p>
                 </div>

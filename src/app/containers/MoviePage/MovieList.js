@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from './Item';
+import Movie from './Movie';
 import Pagination from '../../components/Pagination/Pagination';
 
 const MovieList = (props) => {
@@ -8,7 +8,7 @@ const MovieList = (props) => {
     const getMovie = props.movie;
     return (
         <div className="ss_results">
-            {movies.map(movie => (<Item
+            {movies.map(movie => (<Movie
                                     viewDetail={() => getMovie(movie.id)}
                                     movie={movie}
                                     key={movie.id} />) )}

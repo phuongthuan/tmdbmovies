@@ -7,7 +7,21 @@ import './SidePanel.scss';
 
 const SideBarPanel = (props) => {
 
-    const { revenue, release_dates, production_countries, genres, keywords, budget, status, runtime, original_title, original_language } = props.data;
+    const {
+            homepage,
+            networks,
+            revenue,
+            type,
+            episode_run_time,
+            release_dates,
+            production_countries,
+            genres,
+            keywords,
+            budget,
+            status,
+            runtime,
+            original_title,
+            original_language } = props.data;
 
     function moneyFormat(money) {
         if (money && money > 0) {
@@ -26,7 +40,7 @@ const SideBarPanel = (props) => {
     }
 
     function getReleaseDate() {
-        if (props.data.release_dates && props.data.production_countries) {
+        if (release_dates && production_countries) {
 
             const dates = release_dates.results;
 
@@ -39,7 +53,16 @@ const SideBarPanel = (props) => {
                             </div> Premiere</div>
                     </li>
                 )));
+        }
+    }
 
+    function getNetworks() {
+        if (networks) {
+            return networks.map(network => (
+                <li key={network.id}>
+                    <a href="/network/89"><img alt={network.name} src={`https://image.tmdb.org/t/p/h30${network.logo_path}`} /></a>
+                </li>
+            ))
         }
     }
 
@@ -51,15 +74,34 @@ const SideBarPanel = (props) => {
 
     function getKeywords(keywords) {
         if (keywords) {
-            return keywords.keywords.map(keyword => (<li key={keyword.id}><a href="">{keyword.name}</a></li>))
+            return (keywords.keywords || keywords.results).map(keyword => (<li key={keyword.id}><a href="">{keyword.name}</a></li>))
         }
     }
 
-    function getRuntime() {
-        let h = runtime / 60 | 0,
-            m = runtime % 60 | 0;
-        return ( h + "h "
-            +  m + "m ");
+    function getRuntime(runtime) {
+        if (runtime) {
+            if (runtime instanceof Array) {
+                var time = [];
+                for (let i =0; i < runtime.length; i++) {
+                    let h = runtime[i] / 60 | 0,
+                        m = runtime[i] % 60 | 0;
+
+                    if (h <= 0) time.push(m + "m ");
+                    else if (h === 1) time.push("60m");
+                    else if (h > 0 && m === 0) time.push(h + "h ");
+                    else (time.push(h + "h " + m + "m "));
+                }
+                return time.slice(0, time.length).join(', ');
+            }
+
+            let h = runtime / 60 | 0,
+                m = runtime % 60 | 0;
+            if (h <= 0) return m + "m ";
+            else if (h === 1) return "60m";
+            else if (h > 0 && m === 0) return h + "h ";
+            return ( h + "h "
+                +  m + "m ");
+        }
     }
 
     return (
@@ -75,35 +117,73 @@ const SideBarPanel = (props) => {
                                   <a className="social_link" href="https://instagram.com/bigbangtheory_cbs/" target="_blank" rel="noopener"><FontAwesomeIcon icon={['fab', 'twitter-square']} /></a>
                                 </span>
                                 <h4><bdi>Facts</bdi></h4>
-                                <p><strong>Original Title</strong>{original_title}</p>
-                                <p><strong><bdi>Status</bdi></strong>{status}</p>
-                                <p className="no_bottom_pad"><strong>Release Information</strong></p>
 
-                                <ul className="releases">
-                                    {getReleaseDate()}
-                                </ul>
+                                {original_title &&
+                                    <p><strong>Original Title</strong>{original_title}</p>
+                                }
+
+                                <p><strong><bdi>Status</bdi></strong>{status}</p>
+
+                                {release_dates &&
+                                    <div>
+                                        <p className="no_bottom_pad"><strong>Release Information</strong></p>
+                                        <ul className="releases">
+                                            {getReleaseDate()}
+                                        </ul>
+                                    </div>
+                                }
+
+                                {networks &&
+                                    <div>
+                                        <p className="no_bottom_pad"><strong><bdi>Network</bdi></strong></p>
+                                        <ul className="networks">
+                                            {getNetworks()}
+                                        </ul>
+                                    </div>
+                                }
+
+                                {type &&
+                                    <p><strong>Type</strong>{type}</p>
+                                }
 
                                 <p><strong>Original Language</strong>{getOriginalLanguage(original_language)}</p>
-                                <p><strong><bdi>Runtime</bdi></strong> {getRuntime()}</p>
-                                <p><strong><bdi>Budget</bdi></strong>{moneyFormat(budget)}</p>
-                                <p><strong><bdi>Revenue</bdi></strong>{moneyFormat(revenue)}</p>
-                                <p><strong><bdi>Homepage</bdi></strong> -</p>
+
+                                <p><strong><bdi>Runtime</bdi></strong>
+                                    {getRuntime((runtime || episode_run_time))}
+                                </p>
+
+                                {(budget || revenue) &&
+                                    <div>
+                                        <p><strong><bdi>Budget</bdi></strong>{moneyFormat(budget)}</p>
+                                        <p><strong><bdi>Revenue</bdi></strong>{moneyFormat(revenue)}</p>
+                                    </div>
+                                }
+
+                                <p>
+                                    <strong><bdi>Homepage</bdi></strong>
+                                    {homepage == null ? ' -' : (<a href={homepage} target="_blank">{homepage}</a>) }
+                                </p>
                             </section>
+
                             <section className="genres right_column">
                                 <h4><bdi>Genres</bdi></h4>
                                 <ul>
                                     {getGenres(genres)}
                                 </ul>
                             </section>
+
                             <section className="keywords right_column">
                                 <h4><bdi>Keywords</bdi></h4>
                                 <ul>
                                     {getKeywords(keywords)}
                                 </ul>
                             </section>
+
                         </div>
                     </div>
                     <div>
+
+                        {/*Content Score*/}
                         <section className="content_score">
                             <h4 dir="auto">Content Score</h4>
                             <div className="content_score">
@@ -113,6 +193,8 @@ const SideBarPanel = (props) => {
                             </div>
                             <p dir="auto">Yes! Looking good!</p>
                         </section>
+
+                        {/*Leader Board*/}
                         <section className="leaderboard">
                             <h4>Top Contributors</h4>
                             <div className="leaders">

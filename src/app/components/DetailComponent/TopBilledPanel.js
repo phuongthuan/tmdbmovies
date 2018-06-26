@@ -1,5 +1,5 @@
 import React from 'react';
-import imageNa from '../../images/no_image_profile.png';
+import imageNa from '../../images/no-person.jpg';
 
 const TopBilledPanel = (props) => {
 
