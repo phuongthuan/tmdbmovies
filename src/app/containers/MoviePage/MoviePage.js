@@ -7,6 +7,7 @@ import Popular from './Popular';
 import MovieDetail from "./MovieDetail";
 
 class MoviePage extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -21,17 +22,11 @@ class MoviePage extends Component {
     render() {
         return (
             <Switch>
-                {/* <Route exact path="/movie" render={() => (<MovieComponent type="popular" data={this.state.popular} updateMovieList={this.updateMovieList.bind(this)} />)} /> */}
                 <Route exact path="/movie" render={props => <Popular data={this.getMovie} {...props} />} />
                 <Route path="/movie/top-rated" render={props => <TopRated data={this.getMovie} {...props} />} />
                 <Route path="/movie/upcoming" render={props => <Upcoming data={this.getMovie} {...props} />} />
                 <Route path="/movie/now-playing" render={props => <NowPlaying data={this.getMovie} {...props} />} />
-                <Route
-                    path="/movie/:movie"
-                    render={props => (<MovieDetail
-                    getMovie={this.getMovie}
-                    data={this.state.movie}
-                    {...props} />)} />
+                <Route path="/movie/:movie" render={props => (<MovieDetail data={this.state.movie} {...props} />)}/>
             </Switch>
         );
     }

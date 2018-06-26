@@ -28,6 +28,7 @@ class MovieDetail extends React.Component {
 
     componentDidUpdate() {
         window.scrollTo(0,0);
+        return true;
     }
 
     getMoviebyId = (id) => {
