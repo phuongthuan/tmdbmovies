@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../images/no_image_profile.png';
+import image from '../../images/no-person.jpg';
 
 const Person = (props) => {
     const person = props.person;

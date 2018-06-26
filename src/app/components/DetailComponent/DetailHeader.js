@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import image from '../../images/not-available.png';
+import image from '../../images/NoImage_Available.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import glamorous from 'glamorous';
 import * as Vibrant from 'node-vibrant'
@@ -36,19 +36,9 @@ class DetailHeader extends React.Component {
         };
     };
 
-    // randomRGBA = () => {
-    //     const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-    //     const randomByte = () => randomNumber(0, 255);
-    //     const randomPercent = () => (randomNumber(50, 100) * 0.01).toFixed(2);
-    //     const randomCssRgba = () => `rgb(${this.state.vibrantRgb})`;
-    //     return {
-    //         backgroundImage: `radial-gradient(circle at 20% 50%, ${randomCssRgba()} 0%, ${randomCssRgba()} 100%)`,
-    //     };
-    // };
-
     render() {
 
-        const { backdrop_path, poster_path, title, release_date, overview } = this.props.data;
+        const { first_air_date, backdrop_path, poster_path, title, name,  release_date, overview } = this.props.data;
 
         let imageUrl = poster_path == null ? image : `https://image.tmdb.org/t/p/w300_and_h450_bestv2${poster_path}`;
 
@@ -65,7 +55,7 @@ class DetailHeader extends React.Component {
                         <section className="images">
                             <div className="poster">
                                 <div className="image_content">
-                                    <img src={imageUrl} alt={title}/>
+                                    <img src={imageUrl} alt={title || name}/>
                                 </div>
                                 <div className="zoom">
                                     <a href=""><span><FontAwesomeIcon icon="search-plus"/></span>Expand</a>
@@ -75,8 +65,8 @@ class DetailHeader extends React.Component {
                                 <section className="header poster">
                                     <div className="title">
                                       <span>
-                                        <a href=""><h2>{title}</h2></a><span
-                                          className="release_date">({moment(release_date).format("YYYY")})</span>
+                                        <a href=""><h2>{title || name}</h2></a><span
+                                          className="release_date">({moment(release_date || first_air_date).format("YYYY")})</span>
                                       </span>
                                     </div>
                                     {/* <ul class="auto actions">

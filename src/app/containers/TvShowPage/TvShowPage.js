@@ -10,21 +10,23 @@ class TvShowPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            options: {
-                type: 'popular',
-                page: 'tv_show'
-            }
+            tv: {}
 		}
 	}
+
+    getTv = (data) => {
+        this.setState({ tv: data });
+    };
+
 	render() {
         return (
             <Switch>
                 {/* <Route exact path="/tv" render={() => (<MovieComponent type="popular" data={this.state.popular} updateMovieList={this.updateMovieList.bind(this)} />)} /> */}
-                <Route exact path="/tv" render={(props) => <Popular options={this.state.options} {...props} />} />
-                <Route path="/tv/top-rated" render={(props) => <TopRated {...props} />} />
-                <Route path="/tv/on-the-air" render={props => <OnTv {...props} />} />
-                <Route path="/tv/airing-today" render={props => <AiringToday {...props} />} />
-                <Route path="/tv/:tv" component={TvDetail} />
+                <Route exact path="/tv" render={(props) => <Popular data={this.getTv} {...props} />} />
+                <Route path="/tv/top-rated" render={(props) => <TopRated data={this.getTv} {...props} />} />
+                <Route path="/tv/on-the-air" render={props => <OnTv data={this.getTv} {...props} />} />
+                <Route path="/tv/airing-today" render={props => <AiringToday data={this.getTv} {...props} />} />
+                <Route path="/tv/:tv" render={props => (<TvDetail data={this.state.tv} {...props} />)} />
             </Switch>
         );
 	}

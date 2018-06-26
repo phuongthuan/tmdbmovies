@@ -9,7 +9,6 @@ import TopBilledPanel from '../../components/DetailComponent/TopBilledPanel';
 import RecommendationPanel from '../../components/DetailComponent/RecommendationPanel';
 import SideBarPanel from '../../components/DetailComponent/SideBarPanel';
 
-
 class MovieDetail extends React.Component {
 
     constructor(props) {
@@ -27,6 +26,16 @@ class MovieDetail extends React.Component {
             });
     }
 
+    componentDidUpdate() {
+        window.scrollTo(0,0);
+    }
+
+    getMoviebyId = (id) => {
+        requestApi.fetchDataById('movie', id).then(response => {
+            this.setState({movie: response.data});
+        });
+    };
+
     render() {
         return (
             <section className="inner_content">
@@ -43,17 +52,14 @@ class MovieDetail extends React.Component {
                                 {/*Top Billed Panel*/}
                                 <TopBilledPanel data={this.state.movie}/>
 
-
                                 {/*Social Panel*/}
                                 <SocialPanel data={this.state.movie}/>
-
 
                                 {/*Media Panel Component*/}
                                 <MediaPanel data={this.state.movie}/>
 
-
                                 {/*Recommendations Panel*/}
-                                <RecommendationPanel data={this.state.movie}/>
+                                <RecommendationPanel type="movie" viewRec={this.getMoviebyId} data={this.state.movie}/>
 
                             </div>
 
