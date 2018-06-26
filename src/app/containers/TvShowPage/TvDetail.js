@@ -26,6 +26,16 @@ class TvDetail extends Component {
             });
     }
 
+    componentDidUpdate() {
+        window.scrollTo(0,0);
+    }
+
+    getTvbyId = (id) => {
+        requestApi.fetchDataById('tv', id).then(response => {
+            this.setState({tv: response.data});
+        });
+    };
+
     render() {
         return (
             <section className="inner_content">
@@ -51,7 +61,7 @@ class TvDetail extends Component {
                                 <MediaPanel data={this.state.tv}/>
 
                                 {/*Recommendations Panel*/}
-                                <RecommendationPanel data={this.state.tv}/>
+                                <RecommendationPanel type="tv" viewRec={this.getTvbyId} data={this.state.tv}/>
 
                             </div>
 

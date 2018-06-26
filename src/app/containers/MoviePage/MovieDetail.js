@@ -1,5 +1,4 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import './MovieDetail.scss';
 import requestApi from '../api';
 import MenuDetail from '../../components/DetailComponent/MenuDetail';
@@ -9,7 +8,6 @@ import SocialPanel from '../../components/DetailComponent/SocialPanel';
 import TopBilledPanel from '../../components/DetailComponent/TopBilledPanel';
 import RecommendationPanel from '../../components/DetailComponent/RecommendationPanel';
 import SideBarPanel from '../../components/DetailComponent/SideBarPanel';
-
 
 class MovieDetail extends React.Component {
 
@@ -28,21 +26,17 @@ class MovieDetail extends React.Component {
             });
     }
 
-
-    componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps);
-        console.log(prevState);
+    componentDidUpdate() {
+        window.scrollTo(0,0);
     }
-
 
     getMoviebyId = (id) => {
         requestApi.fetchDataById('movie', id).then(response => {
-            this.props.getMovie(response.data);
+            this.setState({movie: response.data});
         });
     };
 
     render() {
-
         return (
             <section className="inner_content">
                 <DetailHeader data={this.state.movie}/>
@@ -58,17 +52,14 @@ class MovieDetail extends React.Component {
                                 {/*Top Billed Panel*/}
                                 <TopBilledPanel data={this.state.movie}/>
 
-
                                 {/*Social Panel*/}
                                 <SocialPanel data={this.state.movie}/>
-
 
                                 {/*Media Panel Component*/}
                                 <MediaPanel data={this.state.movie}/>
 
-
                                 {/*Recommendations Panel*/}
-                                <RecommendationPanel type="movie" triggerEvent={this.getMoviebyId} data={this.state.movie}/>
+                                <RecommendationPanel type="movie" viewRec={this.getMoviebyId} data={this.state.movie}/>
 
                             </div>
 
@@ -79,7 +70,6 @@ class MovieDetail extends React.Component {
 
                     </div>
                 </div>
-                {/*<Route path="/movie/:movie" component={MovieDetail} />*/}
             </section>
         );
     }

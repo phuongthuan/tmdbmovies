@@ -8,9 +8,9 @@ const RecommendationPanel = (props) => {
 
     const { recommendations } = props.data;
 
-    const getItemId = props.triggerEvent;
+    const viewItem = props.viewRec;
 
-    function convertRouteName(id, routeName) {
+    function route(id, routeName) {
         return '/' + props.type + '/' + id + '-' + (routeName.toLowerCase()
             .replace(/[^\w ]+/g, '')
             .replace(/ +/g, '-'));
@@ -31,8 +31,9 @@ const RecommendationPanel = (props) => {
                 <div key={rec.id} className="item mini backdrop mini_card">
                     <div className="image_content">
                         <Link
-                            onClick={() => getItemId(rec.id)}
-                            to={convertRouteName((rec.id), (rec.title || rec.name)) }
+
+                            onClick={() => viewItem(rec.id)}
+                            to={route((rec.id), (rec.title || rec.name)) }
                             title={rec.title || rec.name}>
 
                             <img
@@ -45,12 +46,13 @@ const RecommendationPanel = (props) => {
                     </div>
 
                     <p className="movie flex">
-                        <a  className="title"
-                            href="/movie/238"
-                            title={rec.title || rec.name}>
+                        <Link  className="title"
+                               onClick={() => viewItem(rec.id)}
+                               to={route((rec.id), (rec.title || rec.name)) }
+                               title={rec.title || rec.name}>
 
                             <bdi>{rec.title || rec.name}</bdi>
-                        </a>
+                        </Link>
                         <span className="vote_average">8.6 <FontAwesomeIcon icon="star" /></span>
                     </p>
                 </div>
