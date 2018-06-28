@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import TvShows from './TvShows';
 import Movies from './Movies';
 import MovieDetail from "../MoviePage/MovieDetail";
@@ -11,21 +11,32 @@ class DiscoverPage extends Component {
         super(props);
         this.state = {
             data: {}
-        }
+        };
     }
 
     getDataItem = (data) => {
-        this.setState({ data: data });
+        this.setState({data});
     };
+
+    // componentDidMount() {
+    //     this.setState({data: localStorage.getItem("data")});
+    // }
+
+    // componentWillUnmount() {
+    //     localStorage.removeItem("data");
+    // }
 
     render() {
         return (
             <Switch>
-                <Route exact path="/discover/movie" render={props => <Movies data={this.getDataItem} {...props} />} />
-                <Route path="/discover/tv" render={props => <TvShows data={this.getDataItem} {...props} />} />
-                <Route path="/movie/:movie" render={props => <MovieDetail data={this.state.data} {...props} />} />
-                <Route path="/tv/:tv" render={props => <TvDetail data={this.state.data} {...props} />} />
-                <Redirect to="/discover/movie" />
+                {/*<Route exact path="/discover/movie" component={Movies} data={this.getDataItem} />*/}
+                <Route exact path="/discover/movie" render={props => <Movies data={this.getDataItem} {...props} />}/>
+
+                <Route path="/discover/tv" component={TvShows}/>
+                <Route path="/movie/:movie" component={MovieDetail} data={this.state.data}/>
+                {/*<Route path="/movie/:movie" render={props => <MovieDetail movie={this.state.data} {...props} />} />*/}
+                <Route path="/tv/:tv" component={TvDetail} data={this.state.data}/>
+                <Redirect to="/discover/movie"/>
             </Switch>
         );
     }

@@ -38,7 +38,8 @@ class TvShow extends Component {
 
     getTvbyId = (id) => {
         requestApi.fetchDataById('tv', id).then(response => {
-            this.props.data(response.data);
+            // this.props.data(response.data);
+            localStorage.setItem("data", response.data);
         });
     };
 

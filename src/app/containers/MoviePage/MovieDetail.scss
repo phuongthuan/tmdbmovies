@@ -471,6 +471,13 @@ ul {
   line-height: 1.4em;
 }
 
+.ss_info {
+  .ss_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 ol.people {
   list-style-type: none;
   list-style-position: inside;
@@ -1039,4 +1046,16 @@ span.round.initials {
 .header_poster_wrapper {
   display: flex;
   min-height: 450px;
+}
+
+.rate_average {
+  display: inline-flex;
+  font-weight: 700;
+  margin-left: 10px;
+
+  svg {
+    padding-top: 4px;
+    padding-left: 3px;
+    color: #f38c17;
+  }
 }

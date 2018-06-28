@@ -24,9 +24,23 @@ async function searchMultiData(type, query) {
     return await api.get(`${type}?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`);
 }
 
+async function fetchGenres(type) {
+    return await api.get(`genre/${type}/list?api_key=${key}&language=en-US&include_adult=false`)
+}
+
+async function filterData(type, year = null, sort_by = null) {
+    return await api.get(`discover/${type}?api_key=${key}&language=en-US&include_adult=false&primary_release_year=${year}&sort_by=${sort_by}&vote_count.gte=0&media_type=${type}`)
+}
+
+// function filterData(type, ...options) {
+//     return (`discover/${type}?api_key=137efd2d370db5e4c53251137cd907df&language=en-US&include_adult=false&primary_release_year=${options[0]}&sort_by=${options[1]}&vote_count.gte=0&with_genres[]=${options}&media_type=${type}`)
+// }
+
 export default {
     fetchData,
     fetchDataPaginate,
     fetchDataById,
-    searchMultiData
+    searchMultiData,
+    fetchGenres,
+    filterData
 }
