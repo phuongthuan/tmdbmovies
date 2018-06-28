@@ -16,25 +16,25 @@ class TopRated extends Component {
         }
     }
 
-    nextPage(e) {
+    nextPage = (e) => {
         const page = this.state.data.page + 1;
         requestApi.fetchDataPaginate('movie', 'top_rated', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
 
-    prevPaginate(e) {
+    prevPaginate = (e) => {
         const page = this.state.data.page - 1;
         requestApi.fetchDataPaginate('movie', 'top_rated', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
 
-    getMoviebyId(id) {
+    getMoviebyId = (id) => {
         requestApi.fetchDataById('movie', id).then(response => {
             this.props.data(response.data);
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });

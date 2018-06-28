@@ -29,11 +29,11 @@ class NowPlaying extends Component {
     }
 
 
-    getMoviebyId(id) {
+    getMoviebyId = (id) => {
         requestApi.fetchDataById('movie', id).then(response => {
             this.props.data(response.data);
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });

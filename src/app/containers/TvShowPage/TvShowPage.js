@@ -21,7 +21,6 @@ class TvShowPage extends Component {
 	render() {
         return (
             <Switch>
-                {/* <Route exact path="/tv" render={() => (<MovieComponent type="popular" data={this.state.popular} updateMovieList={this.updateMovieList.bind(this)} />)} /> */}
                 <Route exact path="/tv" render={(props) => <Popular data={this.getTv} {...props} />} />
                 <Route path="/tv/top-rated" render={(props) => <TopRated data={this.getTv} {...props} />} />
                 <Route path="/tv/on-the-air" render={props => <OnTv data={this.getTv} {...props} />} />

@@ -1,0 +1,31 @@
+.filter_form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.search_element.full {
+
+}
+
+.search_year {
+  width: 100px;
+
+}
+
+.sort_by {
+  width: 300px;
+}
+
+.genres {
+  width: 360px;
+}
+
+.select {
+  margin-top: 10px;
+  border-radius: 0;
+  div {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+}

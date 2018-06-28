@@ -28,6 +28,7 @@ class TvDetail extends Component {
 
     componentDidUpdate() {
         window.scrollTo(0,0);
+        return true;
     }
 
     getTvbyId = (id) => {

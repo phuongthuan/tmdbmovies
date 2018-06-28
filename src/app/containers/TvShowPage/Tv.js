@@ -2,11 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import image from '../../images/NoImage_Available.png';
 import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Tv = (props) => {
 
     const tv = props.tv;
-    const {id, overview} = tv;
+    const {id, overview, vote_average } = tv;
     const getItemId = props.viewDetail;
 
     let title = tv.hasOwnProperty('title') ? tv.title : tv.name;
@@ -35,16 +36,21 @@ const Tv = (props) => {
             </div>
             <div className="ss_info">
                 <div className="ss_wrapper">
-                    <div className="ss_consencus">
-                        <div className="ss_outer_ring">
-                        </div>
-                    </div>
+                    {/*<div className="ss_consencus">*/}
+                        {/*<div className="ss_outer_ring">*/}
+                        {/*</div>*/}
+                    {/*</div>*/}
                     <div className="ss_wrapper_title">
                         <Link onClick={() => getItemId(id)}
                               to={`/tv/${id}-${titleRoute}`}
                               className="ss_title_result">{title}
                         </Link>
                         <span>{moment(release_date).format("MMM DD, YYYY")}</span>
+                    </div>
+                    <div className="ss_consencus">
+                        <div className="ss_outer_ring">
+                            <span className="rate_average">{vote_average}<FontAwesomeIcon icon="star"/></span>
+                        </div>
                     </div>
                 </div>
                 <p className="ss_overview">
