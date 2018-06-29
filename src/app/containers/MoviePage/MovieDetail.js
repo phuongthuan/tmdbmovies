@@ -31,12 +31,6 @@ class MovieDetail extends React.Component {
         return true;
     }
 
-    getMoviebyId = (id) => {
-        requestApi.fetchDataById('movie', id).then(response => {
-            this.setState({movie: response.data});
-        });
-    };
-
     render() {
         return (
             <section className="inner_content">
@@ -60,7 +54,7 @@ class MovieDetail extends React.Component {
                                 <MediaPanel data={this.state.movie}/>
 
                                 {/*Recommendations Panel*/}
-                                <RecommendationPanel type="movie" viewRec={this.getMoviebyId} data={this.state.movie}/>
+                                <RecommendationPanel type="movie" data={this.state.movie}/>
 
                             </div>
 

@@ -53,6 +53,7 @@
     "react-select": "^2.0.0-beta.6",
     "react-tabs": "^2.2.2",
     "resolve": "1.6.0",
+    "stringquery": "^1.0.8",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.6.2",

@@ -15,33 +15,26 @@ class TvShow extends Component {
         }
     }
 
-    nextPage = (e) => {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        requestApi.fetchDataPaginate('discover', 'tv', page).then(response => {
+        requestApi.fetchDataPaginate('discover/tv', page).then(response => {
             this.setState({data: response.data});
         });
     };
 
-    prevPaginate = (e) => {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        requestApi.fetchDataPaginate('discover', 'tv', page).then(response => {
+        requestApi.fetchDataPaginate('discover/tv', page).then(response => {
             this.setState({ data: response.data });
         });
     };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        requestApi.fetchData('discover', 'tv').then(response => {
+        requestApi.fetchData('discover/tv').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
-
-    getTvbyId = (id) => {
-        requestApi.fetchDataById('tv', id).then(response => {
-            // this.props.data(response.data);
-            localStorage.setItem("data", response.data);
-        });
-    };
 
     render() {
         return (
@@ -49,7 +42,6 @@ class TvShow extends Component {
                 <div className="ss_media">
                     <h2 className="title">Discover New Movies & TV Shows</h2>
                     <TvList
-                        tv={this.getTvbyId}
                         routeProps={this.props}
                         prevPaginate={this.prevPaginate}
                         nextPaginate={this.nextPage}

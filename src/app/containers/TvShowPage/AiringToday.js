@@ -9,36 +9,29 @@ class TopRated extends Component {
         this.state = {
             data: {
                 page: 1,
-                type: 'tv',
                 results: []
             },
             isLoading: false
         }
     }
 
-    nextPage = (e) => {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv/airing_today', page).then(response => {
             this.setState({data: response.data});
         });
     };
 
-    prevPaginate = (e) => {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        requestApi.fetchDataPaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv/airing_today', page).then(response => {
             this.setState({ data: response.data });
-        });
-    };
-
-    getTvbyId = (id) => {
-        requestApi.fetchDataById('tv', id).then(response => {
-            this.props.data(response.data);
         });
     };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        requestApi.fetchData('tv', 'airing_today').then(response => {
+        requestApi.fetchData('tv/airing_today').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
@@ -49,7 +42,6 @@ class TopRated extends Component {
                 <div className="ss_media">
                     <h2 className="title">TV Shows Airing Today</h2>
                     <TvList
-                        tv={this.getTvbyId}
                         routeProps={this.props}
                         prevPaginate={this.prevPaginate}
                         nextPaginate={this.nextPage}

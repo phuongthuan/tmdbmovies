@@ -16,20 +16,20 @@ class PopularPeople extends Component {
 
     nextPage(e) {
         const page = this.state.data.page + 1;
-        requestApi.fetchDataPaginate('person', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('person/popular', page).then(response => {
             this.setState({data: response.data});
         });
     }
 
     prevPaginate(e) {
         const page = this.state.data.page - 1;
-        requestApi.fetchDataPaginate('person', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('person/popular', page).then(response => {
             this.setState({ data: response.data });
         });
     }
 
     componentDidMount() {
-        requestApi.fetchData('person', 'popular').then(response => {
+        requestApi.fetchData('person/popular').then(response => {
             this.setState({ data: response.data });
         });
     }

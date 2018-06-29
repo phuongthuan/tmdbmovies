@@ -8,25 +8,14 @@ import MovieDetail from "./MovieDetail";
 
 class MoviePage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            movie: {}
-        };
-    }
-
-    getMovie = (data) => {
-        this.setState({ movie: data });
-    };
-
     render() {
         return (
             <Switch>
-                <Route exact path="/movie" render={props => <Popular data={this.getMovie} {...props} />} />
-                <Route path="/movie/top-rated" render={props => <TopRated data={this.getMovie} {...props} />} />
-                <Route path="/movie/upcoming" render={props => <Upcoming data={this.getMovie} {...props} />} />
-                <Route path="/movie/now-playing" render={props => <NowPlaying data={this.getMovie} {...props} />} />
-                <Route path="/movie/:movie" render={props => (<MovieDetail data={this.state.movie} {...props} />)}/>
+                <Route exact path="/movie" component={Popular} />} />
+                <Route path="/movie/top-rated" component={TopRated} />} />
+                <Route path="/movie/upcoming" component={Upcoming} />} />
+                <Route path="/movie/now-playing" component={NowPlaying} />} />
+                <Route path="/movie/:movie" component={MovieDetail} />)}/>
             </Switch>
         );
     }

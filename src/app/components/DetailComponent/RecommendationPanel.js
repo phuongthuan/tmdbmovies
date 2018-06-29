@@ -8,8 +8,6 @@ const RecommendationPanel = (props) => {
 
     const { recommendations } = props.data;
 
-    const viewItem = props.viewRec;
-
     function route(id, routeName) {
         return '/' + props.type + '/' + id + '-' + (routeName.toLowerCase()
             .replace(/[^\w ]+/g, '')
@@ -23,17 +21,11 @@ const RecommendationPanel = (props) => {
 
     function getRecommendations(payload) {
         if (payload) {
-
             var recommendations = payload.results.slice(0, 8);
-
             return recommendations.map(rec => (
-
                 <div key={rec.id} className="item mini backdrop mini_card">
                     <div className="image_content">
-                        <Link
-
-                            onClick={() => viewItem(rec.id)}
-                            to={route((rec.id), (rec.title || rec.name)) }
+                        <Link to={route((rec.id), (rec.title || rec.name)) }
                             title={rec.title || rec.name}>
 
                             <img
@@ -46,8 +38,7 @@ const RecommendationPanel = (props) => {
                     </div>
 
                     <p className="movie flex">
-                        <Link  className="title"
-                               onClick={() => viewItem(rec.id)}
+                        <Link className="title"
                                to={route((rec.id), (rec.title || rec.name)) }
                                title={rec.title || rec.name}>
 

@@ -8,7 +8,6 @@ const Movie = (props) => {
 
     const movie = props.movie;
     const {id, overview, vote_average} = movie;
-    const getItemId = props.viewDetail;
 
     let title = movie.hasOwnProperty('title') ? movie.title : movie.name;
     let release_date = movie.hasOwnProperty('release_date') ? movie.release_date : movie.first_air_date;
@@ -27,8 +26,7 @@ const Movie = (props) => {
     return (
         <div className="ss_item ss_card">
             <div className="ss_image_content">
-                <Link onClick={() => getItemId(id)}
-                      to={`/movie/${id}-${titleRoute}`}>
+                <Link to={`/movie/${id}-${titleRoute}`}>
                     <img style={imageStyle} src={imageUrl} alt={title}/>
                     <div className="ss_meta">
                     </div>
@@ -41,8 +39,7 @@ const Movie = (props) => {
                         {/*</div>*/}
                     {/*</div>*/}
                     <div className="ss_wrapper_title">
-                        <Link onClick={() => getItemId(id)}
-                              to={`/movie/${id}-${titleRoute}`}
+                        <Link to={`/movie/${id}-${titleRoute}`}
                               className="ss_title_result">{title}
                         </Link>
                         <span>{moment(release_date).format("MMM DD, YYYY")}</span>
@@ -59,7 +56,6 @@ const Movie = (props) => {
                 </p>
                 <p className="ss_view_more">
                     <Link
-                        onClick={() => getItemId(id)}
                         to={`/movie/${id}-${titleRoute}`}>
                         More Info
                     </Link>
