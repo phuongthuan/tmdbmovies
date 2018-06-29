@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import requestApi from '../api';
 import MovieList from "../MoviePage/MovieList";
 import FormFilter from "./FormFilter";
-import queryString from 'query-string';
 import { withRouter } from "react-router-dom";
+import querySearch from "stringquery";
 
 class Movies extends Component {
 
@@ -74,7 +74,7 @@ class Movies extends Component {
     };
 
     fetchMoviesListByGivingUrlParams = () => {
-        const param = queryString.parse(location.search);
+        const param = querySearch(this.props.location.search);
         const args = [param.page, param.primary_release_year, param.sort_by, param.media_type];
         requestApi.fetchData('discover/movie', ...args).then(response => {
             this.setState({ data: response.data});
