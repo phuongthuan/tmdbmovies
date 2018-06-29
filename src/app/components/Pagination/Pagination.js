@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom';
 
 const Pagination = (props) => {
+
     const { match } = props.routeProps;
     const dataPaginate = props.dataPaginate;
     const { page, total_pages, total_results } = dataPaginate;
-    
+
     const paginate = () => {
         if (page === 1) {
             return (

@@ -7,25 +7,15 @@ import Popular from './Popular.js';
 import TvDetail from "./TvDetail";
 
 class TvShowPage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-            tv: {}
-		}
-	}
-
-    getTv = (data) => {
-        this.setState({ tv: data });
-    };
 
 	render() {
         return (
             <Switch>
-                <Route exact path="/tv" render={(props) => <Popular data={this.getTv} {...props} />} />
-                <Route path="/tv/top-rated" render={(props) => <TopRated data={this.getTv} {...props} />} />
-                <Route path="/tv/on-the-air" render={props => <OnTv data={this.getTv} {...props} />} />
-                <Route path="/tv/airing-today" render={props => <AiringToday data={this.getTv} {...props} />} />
-                <Route path="/tv/:tv" render={props => (<TvDetail data={this.state.tv} {...props} />)} />
+                <Route exact path="/tv" component={Popular} />} />
+                <Route path="/tv/top-rated" component={TopRated} />} />
+                <Route path="/tv/on-the-air" component={OnTv} />} />
+                <Route path="/tv/airing-today" component={AiringToday} />} />
+                <Route path="/tv/:tv" component={TvDetail} />)} />
             </Switch>
         );
 	}

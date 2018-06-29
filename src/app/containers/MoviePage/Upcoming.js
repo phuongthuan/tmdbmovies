@@ -5,7 +5,6 @@ import MovieList from './MovieList';
 class Upcoming extends Component {
     constructor(props) {
         super(props);
-        this.getMoviebyId = this.getMoviebyId.bind(this);
         this.state = {
             data: {
                 results: []
@@ -14,29 +13,23 @@ class Upcoming extends Component {
         }
     }
 
-    nextPage = (e) => {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        requestApi.fetchDataPaginate('movie', 'upcoming', page).then(response => {
+        requestApi.fetchDataPaginate('movie/upcoming', page).then(response => {
             this.setState({ data: response.data });
         });
     };
 
-    prevPaginate = (e) => {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        requestApi.fetchDataPaginate('movie', 'upcoming', page).then(response => {
+        requestApi.fetchDataPaginate('movie/upcoming', page).then(response => {
             this.setState({ data: response.data });
-        });
-    };
-
-    getMoviebyId = (id) => {
-        requestApi.fetchDataById('movie', id).then(response => {
-            this.props.data(response.data);
         });
     };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        requestApi.fetchData('movie', 'upcoming').then(response => {
+        requestApi.fetchData('movie/upcoming').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
@@ -47,7 +40,6 @@ class Upcoming extends Component {
                 <div className="ss_media">
                     <h2 className="title">Upcoming Movies</h2>
                     <MovieList
-                        movie={this.getMoviebyId}
                         routeProps={this.props}
                         prevPaginate={this.prevPaginate}
                         nextPaginate={this.nextPage}

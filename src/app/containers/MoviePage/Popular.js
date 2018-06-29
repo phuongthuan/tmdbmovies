@@ -15,29 +15,23 @@ class Popular extends Component {
         };
     }
 
-    nextPage = (e) => {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        requestApi.fetchDataPaginate('movie', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('movie/popular', page).then(response => {
             this.setState({data: response.data});
         });
     };
 
-    prevPaginate = (e) => {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        requestApi.fetchDataPaginate('movie', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('movie/popular', page).then(response => {
             this.setState({ data: response.data });
-        });
-    };
-
-    getMoviebyId = (id) => {
-        requestApi.fetchDataById('movie', id).then(response => {
-            this.props.data(response.data);
         });
     };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        requestApi.fetchData('movie', 'popular').then(response => {
+        requestApi.fetchData('movie/popular').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
@@ -48,7 +42,6 @@ class Popular extends Component {
                 <div className="ss_media">
                     <h2 className="title">Popular Movies</h2>
                     <MovieList
-                        movie={this.getMoviebyId}
                         routeProps={this.props}
                         prevPaginate={this.prevPaginate}
                         nextPaginate={this.nextPage}
