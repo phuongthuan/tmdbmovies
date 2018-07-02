@@ -5,6 +5,7 @@ import People from '../../containers/PeoplePage/PeoplePage';
 import TVShow from '../../containers/TvShowPage/TvShowPage';
 import { Switch, Route } from 'react-router-dom'
 import MoviePage from '../../containers/MoviePage/MoviePage';
+import ResultSearchPage from "../../containers/ResultSearchPage/ResultSearchPage";
 import './Main.scss';
 
 const Main = () => {
@@ -16,6 +17,7 @@ const Main = () => {
                 <Route path="/movie" component={MoviePage} />
                 <Route path="/tv" component={TVShow} />
                 <Route path="/person" component={People} />
+                <Route path="/search" component={ResultSearchPage} />
             </Switch>
         </main>
     );

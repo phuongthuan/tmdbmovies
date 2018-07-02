@@ -21,11 +21,15 @@ async function fetchDataPaginate(url, page) {
     return await api.get(`${url}?api_key=${key}&language=en-US&page=${page}`);
 }
 
+async function fetchResultsSearchPaginate(url, page, query) {
+    return await api.get(`${url}?api_key=${key}&language=en-US&query=${query}&page=${page}`);
+}
+
 async function fetchDataById(url, id) {
     return await api.get(`${url}/${id}?api_key=${key}&language=en-US&append_to_response=videos,images,credits,recommendations,release_dates,keywords,reviews`);
 }
 
-async function searchMultiData(url, query) {
+async function search(url, query) {
     return await api.get(`${url}?api_key=${key}&language=en-US&query=${query}&page=1`);
 }
 
@@ -37,17 +41,13 @@ async function filterData(url, year = '', sort_by = '', type = '') {
     return await api.get(`${url}?api_key=${key}&language=en-US&primary_release_year=${year}&sort_by=${sort_by}&vote_count.gte=0&media_type=${type}`)
 }
 
-
-// function filterData(type, ...options) {
-//     return (`discover/${type}?api_key=137efd2d370db5e4c53251137cd907df&language=en-US&include_adult=false&primary_release_year=${options[0]}&sort_by=${options[1]}&vote_count.gte=0&with_genres[]=${options}&media_type=${type}`)
-// }
-
 export default {
     fetchData,
     fetchDataPaginate,
     fetchDataById,
-    searchMultiData,
+    search,
     fetchGenres,
     filterData,
     fetchDataDiscoverPagePaginate,
+    fetchResultsSearchPaginate
 }

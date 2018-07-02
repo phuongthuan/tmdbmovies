@@ -36,7 +36,7 @@ class SearchBar extends Component {
                             <span className="autocomplete">
                                 <input
                                     onFocus={this.props.onFocus}
-                                    onBlur={this.props.onBlur}
+                                    // onBlur={this.props.onBlur}
                                     onChange={this.handleSearch}
                                     autoCorrect="off"
                                     autoComplete="off"
