@@ -1,0 +1,37 @@
+.ss_media.results_search {
+  section {
+    width: 740px;
+  }
+  nav {
+    box-sizing: border-box;
+    width: 260px;
+    float: left;
+    ul {
+      width: 210px;
+      border-top: 2px solid #000;
+      li {
+        position: relative;
+        top: 0;
+        left: 0;
+        a {
+          display: block;
+          width: 210px;
+          border-bottom: 2px solid #000;
+          padding: 12px 0 12px 0;
+          box-sizing: border-box;
+          font-weight: 600;
+          color: #000;
+        }
+      }
+    }
+    .search_tip {
+      margin-top: 20px;
+      padding-right: 46px;
+      padding-left: 25px;
+      box-sizing: border-box;
+      color: #666;
+      font-size: 0.85em;
+      line-height: 1.2em;
+    }
+  }
+}

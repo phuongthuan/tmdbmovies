@@ -7,10 +7,22 @@ main {
   width: 100%;
   min-height: 100%;
   position: relative;
+  display: flex;
 }
 
 .ss_media {
   margin: 50px 0;
+}
+
+section.content {
+  .ss_results {
+    .ss_item {
+      width: 740px;
+      .ss_info {
+        width: 555px;
+      }
+    }
+  }
 }
 
 .ss_results {
@@ -60,7 +72,7 @@ main {
     }
 
     .ss_info {
-      max-width: 298px;
+      width: 298px;
       height: 278px;
       position: relative;
       box-sizing: border-box;

@@ -65,26 +65,6 @@ class FormFilter extends Component {
         }
     };
 
-
-
-    // filterGenres = (selectedGenres)  => {
-    //     const genres = this.genresOption();
-    //     if (genres) {
-    //         return genres.filter(genre =>
-    //             genre.label.toLowerCase().includes(selectedGenres.toLowerCase())
-    //         );
-    //     }
-    // };
-    //
-    // promiseOptions = (selectedGenres) => {
-    //     return new Promise(resolve => {
-    //         setTimeout(() => {
-    //             resolve(this.filterGenres(selectedGenres));
-    //         }, 1000);
-    //     });
-    // };
-
-
     getYear() {
         const currentYear = new Date().getFullYear(), years = [], options = [];
         let startYear = 1900;
@@ -105,15 +85,6 @@ class FormFilter extends Component {
             this.setState({genres: options});
         });
     }
-
-    // genresOption() {
-    //     const options = [];
-    //     const genres = this.props.genresList.genres;
-    //     if (genres && genres instanceof Array) {
-    //         genres.map(genre => options.push({ value: genre.id, label: genre.name}));
-    //     }
-    //     return options;
-    // }
 
     render() {
 

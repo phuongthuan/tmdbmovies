@@ -1,25 +1,85 @@
 import React, {Component} from 'react';
+import ResultsList from './ResultsList';
+import './ResultsSearchPage.scss';
+import SideBar from './SideBar';
+import querySearch from "stringquery";
+import requestApi from "../api";
 
 class ResultsSearch extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {page: 1, results: []},
+            results: []
+        };
+    }
+
+    nextPage = () => {
+        const page = this.state.data.page + 1;
+        const url = this.props.location.pathname;
+        const param = querySearch(this.props.location.search);
+        requestApi.fetchResultsSearchPaginate(url, page, param.query).then(response => {
+            this.setState({data: response.data});
+        });
+    };
+
+    prevPaginate = () => {
+        const page = this.state.data.page - 1;
+        const url = this.props.location.pathname;
+        const param = querySearch(this.props.location.search);
+        requestApi.fetchResultsSearchPaginate(url, page, param.query).then(response => {
+            this.setState({data: response.data});
+        });
+    };
+
+    componentDidMount() {
+        this.setState({data: this.props.location.state.results});
+        this.searchByGivingUrlParams();
+    }
+
+    searchByGivingUrlParams = () => {
+        const param = querySearch(this.props.location.search);
+        const url = this.props.location.pathname;
+        requestApi.search(url, param.query).then(response => {
+            this.setState({ data: response.data});
+        });
+    };
+
     render() {
-        console.log(this.props);
+
+        // const param = querySearch(this.props.location.search);
+        // console.log(param.query);
+
+        // console.log('Props', this.props);
+
+        // const location = this.props.location.pathname;
+        // console.log(location);
+
+        // console.log(this.props.location);
+        // console.log(location);
+        // console.log('Results Search state', this.state.data);
+
+        // console.log('Results Search State', this.state.results);
+
+        // const results = this.addRecordtoList();
+        // console.log('RecordList', results);
+
+
         return (
             <div className="container">
-                <div className="ss_media">
-                    <nav>
-                        <ul>
-                            <li><a id="movie" href="/search/movie?query=Love" className="search_tab active" title="Movies" alt="Movies">Movies <span>6599</span></a></li>
-                            <li><a id="tv" href="/search/tv?query=Love" className="search_tab " title="TV Shows" alt="TV Shows">TV Shows <span>1128</span></a></li>
-                            <li><a id="person" href="/search/person?query=Love" className="search_tab " title="People" alt="People">People <span>591</span></a></li>
-                            <li><a id="keyword" href="/search/keyword?query=Love" className="search_tab " title="Keywords" alt="Keywords">Keywords <span>138</span></a></li>
-                            <li><a id="company" href="/search/company?query=Love" className="search_tab " title="Companies" alt="Companies">Companies <span>55</span></a></li>
-                            <li><a id="collection" href="/search/collection?query=Love" className="search_tab " title="Collections" alt="Collections">Collections <span>20</span></a></li>
-                            <li><a id="network" href="/search/network?query=Love" className="search_tab " title="Networks" alt="Networks">Networks <span>0</span></a></li>
-                        </ul>
-                        <p className="search_tip">Tip: You can use the 'y:' filter to narrow your results by year. Example: 'star wars y:1977'.</p>
-                    </nav>
+                <div className="ss_media results_search flex">
+                    <SideBar data={this.props} />
                     <section className="content">
-                        <h2 className="title">Search: Movie Results</h2>
+                        <div className="search_results_movie">
+                            <h2 className="title">Search: Movie Results</h2>
+                        </div>
+
+                        <ResultsList
+                            resultsList={this.state.data}
+                            prevPaginate={this.prevPaginate}
+                            nextPaginate={this.nextPage}
+                            routeProps={this.props}/>
                     </section>
                 </div>
             </div>

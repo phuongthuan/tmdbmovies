@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import ResultsSearch from "./ResultsSearch";
 
 class ResultSearchPage extends Component {
-
     render() {
         return (
             <Switch>

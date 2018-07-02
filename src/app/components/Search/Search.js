@@ -27,7 +27,6 @@ function renderSuggestion(suggestion) {
     );
 }
 
-
 class Search extends Component {
 
     constructor() {
@@ -36,11 +35,12 @@ class Search extends Component {
         this.state = {
             value: '',
             suggestions: [],
-            data: {},
+            data: {
+                results: []
+            },
             isLoading: false
         };
     }
-
 
     loadSuggestions(value) {
         if(this.timeout) clearTimeout(this.timeout);
@@ -49,18 +49,17 @@ class Search extends Component {
         this.setState({isLoading: true});
 
         this.timeout = setTimeout(() => {
-            requestApi.searchMultiData('search/multi', value)
+            requestApi.search('search/multi', value)
                 .then(response => {
                     this.setState({
                         isLoading: false,
-                        data: response.data,
+                        // data: response.data,
                         suggestions: response.data.results
                     });
                 })
                 .catch(error => console.log(error));
         }, 500);
     }
-
 
     onChange = (event, {newValue}) => {
         this.setState({value: newValue});
@@ -70,20 +69,36 @@ class Search extends Component {
         this.loadSuggestions(value);
     };
 
-    onSuggestionSelected = (event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
-        console.log(suggestion);
+    onSuggestionSelected = (event, {suggestion, suggestionValue }) => {
+
+        console.log('Selected', suggestion); // {value: 'new value', label: 'new label'}
 
         if (suggestion.media_type === 'movie') {
-            this.navigate('/search/movie')
+            this.searchData('search/movie', suggestionValue);
+            this.navigate('/search/movie', suggestionValue);
+
         } else if (suggestion.media_type === 'tv') {
-            this.navigate('/search/tv')
+            this.searchData('search/tv', suggestionValue);
+            this.navigate('/search/tv', suggestionValue);
+
         } else {
-            this.navigate('/search')
+            this.searchData('search/multi', suggestionValue);
+            this.navigate('/search', suggestionValue);
         }
     };
 
-    navigate = (pathname) => {
-        this.props.history.push({ pathname, state: {result:this.state.data}});
+    searchData = (url, value) => {
+        requestApi.search(url, value).then(response => {
+            this.setState({data: response.data});
+        });
+    };
+
+    navigate = (pathname, queryValue) => {
+        this.props.history.push({
+            pathname,
+            search: `?query=${queryValue}`,
+            state: {results: this.state.data}
+        });
     };
 
     onSuggestionsClearRequested = () => {
