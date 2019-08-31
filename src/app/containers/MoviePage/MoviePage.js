@@ -7,33 +7,10 @@ import Popular from './Popular';
 import MovieDetail from './MovieDetail';
 
 class MoviePage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // popular: {
-            //     results: [],
-            // },
-            // top_rated: {
-            //     results: [],
-            // },
-            // upcoming: {
-            //     results: [],
-            // },
-            // now_playing: {
-            //     results: [],
-            // }
-        };
-    }
-
-    updateMovieList = () => {
-        this.setState();
-    };
-
     render() {
         return (
             <div className="ss_media">
                 <Switch>
-                    {/* <Route exact path="/movie" render={() => (<MovieComponent type="popular" data={this.state.popular} updateMovieList={this.updateMovieList.bind(this)} />)} /> */}
                     <Route exact path="/movie" render={props => <Popular {...props} />} />
                     <Route path="/movie/top-rated" render={props => <TopRated {...props} />} />
                     <Route path="/movie/upcoming" render={props => <Upcoming {...props} />} />

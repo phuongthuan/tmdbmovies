@@ -7,7 +7,6 @@ class MovieComponent extends Component {
     componentDidMount() {
         movieApi.fetchMovie(this.props.type).then(response => {
             this.setState({ data: response.data, isLoading: false });
-            // this.props.data = response.data;
         });
     }
 
