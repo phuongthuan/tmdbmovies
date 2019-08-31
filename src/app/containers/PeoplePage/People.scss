@@ -1,20 +1,12 @@
 .ss_results {
-  .title {
-
-  }
-
   .pp_square {
-
     margin-top: 16px;
-
     .pp_item.profile.ss_card {
       background-color: #fff;
       box-sizing: border-box;
       flex-wrap: wrap;
       width: 235px;
     }
-
-
     .pp_item.profile {
       float: none;
       display: flex;
@@ -44,13 +36,9 @@
           height: 235px;
         }
         .profile_image {
-
         }
       }
-
-
       .pp_meta {
-
         padding: 4px 8px;
         width: 100%;
         white-space: nowrap;
@@ -77,7 +65,6 @@
         }
       }
     }
-
   }
 }
 

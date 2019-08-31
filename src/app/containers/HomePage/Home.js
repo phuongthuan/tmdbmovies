@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Popular from '../MoviePage/Popular'
 
 class Home extends Component {
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Route exact path="/" render={props => <Popular {...props} />} />
-            </div>
+            </React.Fragment>
         );
     }
 }

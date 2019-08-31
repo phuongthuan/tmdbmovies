@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movieApi from "../api";
-import MovieList from "../MoviePage/MovieList";
+import requestApi from "../api";
+import TvList from "./TvList";
 
 class TopRated extends Component {
 
@@ -9,47 +9,47 @@ class TopRated extends Component {
         this.state = {
             data: {
                 page: 1,
-                type: 'tv',
                 results: []
             },
             isLoading: false
         }
     }
 
-    nextPage(e) {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv/airing_today', page).then(response => {
             this.setState({data: response.data});
         });
-    }
+    };
 
-    prevPaginate(e) {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('tv', 'airing_today', page).then(response => {
+        requestApi.fetchDataPaginate('tv/airing_today', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('tv', 'airing_today').then(response => {
+        requestApi.fetchData('tv/airing_today').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">TV Shows Airing Today</h2>
-                <MovieList
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)}
-                    nextPaginate={this.nextPage.bind(this)}
-                    moviesList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    <h2 className="title">TV Shows Airing Today</h2>
+                    <TvList
+                        routeProps={this.props}
+                        prevPaginate={this.prevPaginate}
+                        nextPaginate={this.nextPage}
+                        tvshowsList={this.state.data} />
+                </div>
             </div>
         );
     }
-
 }
 
 export default TopRated;
