@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movieApi from '../api.js';
-import MovieList from '../MoviePage/MovieList';
+import requestApi from '../api.js';
+import TvList from "./TvList";
 
 class Popular extends Component {
 
@@ -9,47 +9,47 @@ class Popular extends Component {
         this.state = {
             data: {
                 page: 1,
-                type: 'tv',
                 results: []
             },
             isLoading: false
         }
     }
 
-    nextPage(e) {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('tv', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('tv/popular', page).then(response => {
             this.setState({data: response.data});
         });
-    }
+    };
 
-    prevPaginate(e) {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('tv', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('tv/popular', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('tv', 'popular').then(response => {
+        requestApi.fetchData('tv/popular').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">Popular TV Shows</h2>
-                <MovieList 
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)} 
-                    nextPaginate={this.nextPage.bind(this)} 
-                    moviesList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    <h2 className="title">Popular TV Shows</h2>
+                    <TvList
+                        routeProps={this.props}
+                        prevPaginate={this.prevPaginate.bind(this)}
+                        nextPaginate={this.nextPage.bind(this)}
+                        tvshowsList={this.state.data} />
+                </div>
             </div>
         );
     }
-
 }
 
 export default Popular;

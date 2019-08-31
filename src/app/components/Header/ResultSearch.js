@@ -1,74 +1,70 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class ResultSearch extends Component {
-    render() {
-        return (
-            <div class="results_search">
-                <div class="results_popup">
-                    <div class="ss_list_scroller">
-                        <ul class="ss_list_result">
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>Dilwale Dulhania Le Jayenge</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>The Shawshank Redemption</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>Your Name.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>The Godfather</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>Avengers: Infinity War</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item-search">
-                                <div class="slim_search">
-                                    <div class="container">
-                                        <i class="fas fa-search sm"></i>
-                                        <p>Spirited Away</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+const ResultSearch = (props) => {
+
+    const resultsList = props.data.results;
+
+    function showResult(results) {
+        if (results && results.length > 0) {
+
+            const movie = results.filter(result => result.media_type === 'movie')[0];
+            const tv = results.filter(result => result.media_type === 'tv')[0];
+            const finalList = [movie, tv, ...results].slice(0, 20);
+
+            return results.map((result, i) => (
+                <li key={i} className="item-search">
+                    <div className="slim_search">
+                        <div className="container">
+
+                            <FontAwesomeIcon icon={(() => {
+                                switch (result.media_type) {
+                                    case "movie":   return "film";
+                                    case "tv":      return "tv";
+                                    case "people":  return "user";
+                                    default:        return "search";
+                                }
+                            })()} />
+                            <p onClick={() => alert(result.name)}>{result.name || result.title}</p>
+                        </div>
                     </div>
+                </li>
+            ));
+        }
+    }
 
-                    <div class="ss_nodata">
-                        <div class="slim_search">
-                            <div class="container">
-                                <h2>No Result</h2>
+    return (
+        <div className="results_search">
+            <div className="results_popup">
+
+                {(resultsList && resultsList.length > 0) &&
+                    <div className="trending_search">
+                        <div className="container">
+                            <h2>Result Searches</h2>
+                        </div>
+                    </div>
+                }
+
+                <div className="ss_list_scroller">
+                    <ul className="ss_list_result">
+                        {showResult(resultsList)}
+                    </ul>
+                </div>
+
+                {(resultsList && resultsList.length <= 0) &&
+                    <div className="results_popup">
+                        <div className="ss_nodata">
+                            <div className="slim_search">
+                                <div className="container">
+                                    <h2>No Result</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
 export default ResultSearch;

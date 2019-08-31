@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import movieApi from '../api.js';
+import requestApi from '../api.js';
 import MovieList from './MovieList';
+import Spinner from '../../components/Spinner/index.js';
 
 class Popular extends Component {
 
@@ -12,39 +13,45 @@ class Popular extends Component {
                 results: []
             },
             isLoading: false
-        }
+        };
     }
 
-    nextPage(e) {
+    nextPage = () => {
         const page = this.state.data.page + 1;
-        movieApi.fetchMoviePaginate('movie', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('movie/popular', page).then(response => {
             this.setState({data: response.data});
         });
-    }
+    };
 
-    prevPaginate(e) {
+    prevPaginate = () => {
         const page = this.state.data.page - 1;
-        movieApi.fetchMoviePaginate('movie', 'popular', page).then(response => {
+        requestApi.fetchDataPaginate('movie/popular', page).then(response => {
             this.setState({ data: response.data });
         });
-    }
+    };
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        movieApi.fetchMovie('movie', 'popular').then(response => {
+        requestApi.fetchData('movie/popular').then(response => {
             this.setState({ data: response.data, isLoading: false });
         });
     }
 
     render() {
         return (
-            <div>
-                <h2 className="title">Popular Movies</h2>
-                <MovieList 
-                    routeProps={this.props}
-                    prevPaginate={this.prevPaginate.bind(this)} 
-                    nextPaginate={this.nextPage.bind(this)} 
-                    moviesList={this.state.data} />
+            <div className="container">
+                <div className="ss_media">
+                    {this.state.isLoading ? <Spinner /> : (
+                        <React.Fragment>
+                            <h2 className="title">Popular Movies</h2>
+                            <MovieList
+                                routeProps={this.props}
+                                prevPaginate={this.prevPaginate}
+                                nextPaginate={this.nextPage}
+                                moviesList={this.state.data} />
+                        </React.Fragment>
+                    )}
+                </div>
             </div>
         );
     }
