@@ -2,7 +2,6 @@
   "name": "tmdbmovies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://phuongthuan.github.io/tmdbmovies/",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -66,14 +65,11 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
     "babel-plugin-react-html-attrs": "^2.1.0",
-    "gh-pages": "^1.2.0",
     "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.3"
